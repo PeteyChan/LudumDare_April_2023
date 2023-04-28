@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bqdix6bbucn2h"]
+
+[node name="CustomTextInput" type="BoxContainer"]
+offset_right = 220.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+metadata/_edit_group_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 220.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+offset_right = 86.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+text = "Text"
+vertical_alignment = 1
+clip_text = true
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+offset_left = 90.0
+offset_right = 220.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0

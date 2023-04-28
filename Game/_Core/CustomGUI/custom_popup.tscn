@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://chveyygles0o5"]
+
+[node name="CustomPopup" type="Window"]
+position = Vector2i(64, 64)
+size = Vector2i(192, 256)
+metadata/_edit_group_ = true
+
+[node name="PanelContainer" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="_header" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="_items" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="_footer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
