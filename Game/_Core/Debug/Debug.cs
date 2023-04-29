@@ -107,8 +107,12 @@ public static partial class Debug
         {
             if (!Node.IsInstanceValid(instance))
             {
+                var layer = new CanvasLayer();
+                layer.FollowViewportEnabled = true;
+                DebugNode.instance.AddChild(layer);
+
                 instance = new() { Name = "Debug Label2D" };
-                DebugNode.instance.AddChild(instance);
+                instance.SetParent(layer);
             }
             instance.values.Add((position, text, color));
         }
@@ -1001,14 +1005,19 @@ public static partial class Debug // Draw3d
 
         public override void _Process(double delta)
         {
+
             mesh.ClearSurfaces();
             if (Lines.Count == 0) return;
             mesh.SurfaceBegin(Mesh.PrimitiveType.Lines, material);
-            var camera = this.GetViewport().GetCamera2D();
+            min = max = Lines[0].start;
+
             foreach (var line in Lines)
             {
                 var start = line.start;
                 var end = line.end;
+
+                min.X = min.X.MinValue(start.X).MinValue(end.X);
+                max.X = max.X.MaxValue(start.X).MaxValue(end.X);
 
                 mesh.SurfaceSetColor(line.color);
                 mesh.SurfaceAddVertex(new Vector3(start.X, start.Y, 0));
@@ -1017,17 +1026,22 @@ public static partial class Debug // Draw3d
             }
             mesh.SurfaceEnd();
             Lines.Clear();
+
+            //var aabb = new Aabb(new Vector3(min.X, 0, min.Y), new Vector3(max.X, 0, max.Y));
+
+
+            //QueueRedraw();
         }
 
-        static Vector2 end;
-        static void Update(Bootstrap.Process args)
+        Vector2 min, max;
+        public override void _Draw()
         {
-            end.X += (Inputs.key_right_arrow.CurrentValue() - Inputs.key_left_arrow.CurrentValue()) * 10f;
-            end.Y += (Inputs.key_up_arrow.CurrentValue() - Inputs.key_down_arrow.CurrentValue()) * 10f;
-
-            var center = Scene.Current.GetViewport().GetVisibleRect().Size / 2f;
-
-            Debug.DrawLine2D(center, end, Colors.Yellow);
+            float extents = 1000000;
+            var aabb = new Aabb(new Vector3(-extents, -extents, -extents), new Vector3(extents * 2f, extents * 2f, extents * 2f));
+            RenderingServer.MeshSetCustomAabb(mesh.GetRid(), aabb);
+            
+            Debug.Label(mesh.GetAabb());
+            //RenderingServer.CanvasItemSetCustomRect(this.mesh.GetRid(), true, new Rect2(min , max - min));
         }
     }
 }

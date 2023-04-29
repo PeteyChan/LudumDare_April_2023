@@ -112,6 +112,13 @@ public partial class player : RigidBody2D
                     aniamtor_torso.Play("Fall");
                 }
 
+                if (CanWallJump())
+                {
+                    var sign = LinearVelocity.X < 0 ? 1 : -1;
+                    LinearVelocity = new Vector2(move_speed * sign, -jump_strength);
+                    state_machine.next = PlayerStates.Jump;
+                }
+
                 if (grounded) state_machine.next = PlayerStates.Idle;
                 break;
 
@@ -130,6 +137,23 @@ public partial class player : RigidBody2D
             default:
                 state_machine.next = PlayerStates.Idle;
                 break;
+        }
+
+
+
+        bool CanWallJump()
+        {
+            if (!jump.Pressed()) return false;
+            if (LinearVelocity.X == 0)
+                return false;
+
+            Vector2 wall_jump_offset = new Vector2(30, -40);
+            wall_jump_offset.X *= LinearVelocity.X < 0 ? -1f : 1;
+
+            var transform = Transform2D.Identity;
+            transform.Origin = Position + wall_jump_offset;
+            grounded_query_params.Transform = transform;
+            return (Physics.TryOverlapShape2D(grounded_query_params, node_buffer, debug: true));
         }
     }
 }

@@ -6,10 +6,18 @@
 [node name="Testing" type="Node2D"]
 
 [node name="TestCollider" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(397, 547)
-scale = Vector2(13.96, 1)
+position = Vector2(-211, 547)
+scale = Vector2(24.12, 1)
+
+[node name="TestCollider2" parent="." instance=ExtResource("2_iv32r")]
+position = Vector2(164, 288)
+scale = Vector2(1.62822, 1.62822)
+
+[node name="TestCollider3" parent="." instance=ExtResource("2_iv32r")]
+position = Vector2(573, 221)
+scale = Vector2(1.62822, 1.62822)
 
 [node name="Player" parent="." instance=ExtResource("1_mnxmo")]
-position = Vector2(608.116, 244.916)
+position = Vector2(354, 163)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
