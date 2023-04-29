@@ -429,7 +429,6 @@ texture = SubResource("AtlasTexture_o44nb")
 
 [node name="LeftArm" type="Node2D" parent="Torso"]
 position = Vector2(-320.526, -584.952)
-rotation = 2.97356
 scale = Vector2(2.63129, 3.50815)
 
 [node name="RightLeg2" type="Sprite2D" parent="Torso/LeftArm"]
@@ -438,7 +437,6 @@ texture = SubResource("AtlasTexture_ma5sn")
 
 [node name="RightArm" type="Node2D" parent="Torso"]
 position = Vector2(379.397, -623.542)
-rotation = -2.93453
 scale = Vector2(2.63129, 3.50815)
 
 [node name="LeftLeg2" type="Sprite2D" parent="Torso/RightArm"]
@@ -466,3 +464,7 @@ position = Vector2(-79.9328, 114.486)
 [node name="LeftLeg" type="Sprite2D" parent="LowerBody/LeftLeg"]
 position = Vector2(11, 101)
 texture = SubResource("AtlasTexture_1dxku")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -220)
+position_smoothing_enabled = true

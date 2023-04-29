@@ -827,7 +827,7 @@ public static partial class Debug // Draw3d
 
     public static void DrawCapsule(Transform3D transform, float height, float radius, Color color, bool draw_rings = false)
     {
-        
+
 
         Vector3 Xform(Vector3 position) => transform.TranslatedLocal(position).Origin;
         var arc_angle = Mathf.Pi / 8f;
@@ -981,7 +981,11 @@ public static partial class Debug // Draw3d
         public static DrawLine2DImpl Get()
         {
             if (!instance.IsValid())
-                instance = new DrawLine2DImpl { Name = "Debug Line 2D" }.SetParentDeffered(DebugNode.instance);
+            {
+                var layer = new CanvasLayer().SetParentDeffered(DebugNode.instance);
+                layer.FollowViewportEnabled = true;
+                instance = new DrawLine2DImpl { Name = "Debug Line 2D" }.SetParent(layer);
+            }
             return instance;
         }
 
@@ -1000,15 +1004,30 @@ public static partial class Debug // Draw3d
             mesh.ClearSurfaces();
             if (Lines.Count == 0) return;
             mesh.SurfaceBegin(Mesh.PrimitiveType.Lines, material);
+            var camera = this.GetViewport().GetCamera2D();
             foreach (var line in Lines)
             {
+                var start = line.start;
+                var end = line.end;
+
                 mesh.SurfaceSetColor(line.color);
-                mesh.SurfaceAddVertex(new Vector3(line.start.X, line.start.Y, 0));
+                mesh.SurfaceAddVertex(new Vector3(start.X, start.Y, 0));
                 mesh.SurfaceSetColor(line.color);
-                mesh.SurfaceAddVertex(new Vector3(line.end.X, line.end.Y, 0));
+                mesh.SurfaceAddVertex(new Vector3(end.X, end.Y, 0));
             }
             mesh.SurfaceEnd();
             Lines.Clear();
+        }
+
+        static Vector2 end;
+        static void Update(Bootstrap.Process args)
+        {
+            end.X += (Inputs.key_right_arrow.CurrentValue() - Inputs.key_left_arrow.CurrentValue()) * 10f;
+            end.Y += (Inputs.key_up_arrow.CurrentValue() - Inputs.key_down_arrow.CurrentValue()) * 10f;
+
+            var center = Scene.Current.GetViewport().GetVisibleRect().Size / 2f;
+
+            Debug.DrawLine2D(center, end, Colors.Yellow);
         }
     }
 }

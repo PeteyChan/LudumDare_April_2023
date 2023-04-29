@@ -11,3 +11,5 @@ scale = Vector2(13.96, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_mnxmo")]
 position = Vector2(608.116, 244.916)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

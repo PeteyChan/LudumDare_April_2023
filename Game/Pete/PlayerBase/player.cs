@@ -54,6 +54,7 @@ public partial class player : RigidBody2D
         Debug.Label(state_machine.current);
         Debug.Label("grounded", grounded);
         Debug.Label("velocity", LinearVelocity);
+        Debug.Label("position", Position);
 
         void UpdateGrounded()
         {
