@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://darlfucrkb86m"]
+
+[ext_resource type="PackedScene" uid="uid://b36dhs6q8cfii" path="res://Pete/PlayerBase/player.tscn" id="1_mnxmo"]
+[ext_resource type="PackedScene" uid="uid://d0ipw28l6byfl" path="res://Pete/test_collider.tscn" id="2_iv32r"]
+
+[node name="Testing" type="Node2D"]
+
+[node name="TestCollider" parent="." instance=ExtResource("2_iv32r")]
+position = Vector2(397, 547)
+scale = Vector2(13.96, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_mnxmo")]
+position = Vector2(608.116, 244.916)
