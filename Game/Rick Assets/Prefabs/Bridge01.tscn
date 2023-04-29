@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cogeuwci3g3"]
+
+[ext_resource type="Texture2D" uid="uid://plll4fq72knk" path="res://Rick Assets/Floor/Bridge/Bridge01.png" id="1_m6dq4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Bridge01" type="Sprite2D" parent="."]
+position = Vector2(202, -129)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_m6dq4")

@@ -54,16 +54,19 @@ public partial class player : RigidBody2D
         Debug.Label(state_machine.current);
         Debug.Label("grounded", grounded);
         Debug.Label("velocity", LinearVelocity);
+        Debug.Label("position", Position);
 
         void UpdateGrounded()
         {
             var grounded_transform = Godot.Transform2D.Identity;
-            grounded_transform.Origin = new Vector2(GlobalTransform.Origin.X, GlobalTransform.Origin.Y + grounded_offset);
+            grounded_transform.Origin = new Vector2(GlobalTransform.Origin.X, GlobalTransform.Origin.Y + grounded_offset - 20);
             grounded_query_params.Transform = grounded_transform;
-            grounded = Physics.TryOverlapShape2D(grounded_query_params, node_buffer, debug: true);
+            grounded_query_params.Motion = Vector2.Up * grounded_offset * 2f;
+
+            grounded = Physics.TryShapeCast2D(grounded_query_params, out var result, debug: true);
         }
     }
-
+    
     PhysicsShapeQueryParameters2D grounded_query_params;
 
     float move_direction;
@@ -96,7 +99,7 @@ public partial class player : RigidBody2D
                     animator_legs.Play("Walk");
                 }
 
-                LinearVelocity = new Vector2(move_direction * move_speed, -10f);
+                LinearVelocity = new Vector2(move_direction * move_speed, -20f);
 
                 if (move_direction.Abs() < .3f) state_machine.next = PlayerStates.Idle;
                 if (!grounded) state_machine.next = PlayerStates.Falling;
@@ -109,6 +112,13 @@ public partial class player : RigidBody2D
                 {
                     aniamtor_torso.Play("Fall");
                     aniamtor_torso.Play("Fall");
+                }
+
+                if (CanWallJump())
+                {
+                    var sign = LinearVelocity.X < 0 ? 1 : -1;
+                    LinearVelocity = new Vector2(move_speed * sign, -jump_strength);
+                    state_machine.next = PlayerStates.Jump;
                 }
 
                 if (grounded) state_machine.next = PlayerStates.Idle;
@@ -129,6 +139,21 @@ public partial class player : RigidBody2D
             default:
                 state_machine.next = PlayerStates.Idle;
                 break;
+        }
+
+        bool CanWallJump()
+        {
+            if (!jump.Pressed()) return false;
+            if (LinearVelocity.X == 0)
+                return false;
+
+            Vector2 wall_jump_offset = new Vector2(30, -40);
+            wall_jump_offset.X *= LinearVelocity.X < 0 ? -1f : 1;
+
+            var transform = Transform2D.Identity;
+            transform.Origin = Position + wall_jump_offset;
+            grounded_query_params.Transform = transform;
+            return (Physics.TryOverlapShape2D(grounded_query_params, node_buffer, debug: true));
         }
     }
 }
