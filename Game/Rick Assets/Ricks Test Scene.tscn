@@ -40,16 +40,16 @@ position = Vector2(-500, 1286)
 position = Vector2(-630, 1286)
 
 [node name="Node2D150" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(59, 2276)
+position = Vector2(-963.5, 2276)
 
 [node name="Node2D151" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-69, 2276)
+position = Vector2(-1091.5, 2276)
 
 [node name="Node2D152" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-197, 2276)
+position = Vector2(-1219.5, 2276)
 
 [node name="Node2D153" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-327, 2276)
+position = Vector2(-1349.5, 2276)
 
 [node name="Node2D21" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(-752, 1286)
@@ -166,11 +166,6 @@ position = Vector2(-3391, 2021)
 [node name="Node2D43" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(-3649, 1765)
 
-[node name="Node2D230" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-modulate = Color(0.282353, 0.854902, 0, 1)
-position = Vector2(-3518, 1713)
-scale = Vector2(1, 0.2)
-
 [node name="Node2D85" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(-3391, 2148)
 
@@ -190,13 +185,13 @@ position = Vector2(-3648, 2532)
 position = Vector2(-3649, 2148)
 
 [node name="Node2D145" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-443, 2276)
+position = Vector2(-1465.5, 2276)
 
 [node name="Node2D146" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-443, 2403)
+position = Vector2(-1465.5, 2403)
 
 [node name="Node2D148" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-443, 2531)
+position = Vector2(-1465.5, 2531)
 
 [node name="Node2D31" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(-2247, 1639)
@@ -213,8 +208,8 @@ position = Vector2(-2640.5, 1139)
 scale = Vector2(2.01789, 0.155846)
 
 [node name="Node2D46" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2608.5, 857)
-scale = Vector2(3.75772, 0.0999998)
+position = Vector2(-2691, 797.5)
+scale = Vector2(1.95772, 0.0999998)
 
 [node name="Node2D39" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(-2492, 1648)
@@ -286,6 +281,12 @@ position = Vector2(-3131.5, 433.5)
 
 [node name="Node2D168" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(-3131.5, 303.5)
+
+[node name="Node2D174" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+position = Vector2(-3131.5, 178)
+
+[node name="Node2D230" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+position = Vector2(-3131.5, 48)
 
 [node name="Node2D195" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(1342, 1137)
@@ -377,27 +378,6 @@ position = Vector2(-1982, 2660)
 [node name="Node2D109" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(-2110, 2660)
 
-[node name="Node2D110" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1340, 2660)
-
-[node name="Node2D111" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1468, 2660)
-
-[node name="Node2D112" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-702, 2660)
-
-[node name="Node2D113" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-830, 2660)
-
-[node name="Node2D114" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-960, 2660)
-
-[node name="Node2D115" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1086, 2660)
-
-[node name="Node2D116" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1214, 2660)
-
 [node name="Node2D156" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(3641, 1011)
 
@@ -438,28 +418,16 @@ position = Vector2(6007, 755)
 position = Vector2(6007, 627)
 
 [node name="Node2D117" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-444, 2660)
-
-[node name="Node2D118" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-572, 2660)
-
-[node name="Node2D138" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2364, 2310)
+position = Vector2(-1466.5, 2660)
 
 [node name="Node2D139" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1726, 2310)
+position = Vector2(-1764, 2374)
 
 [node name="Node2D140" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1854, 2310)
+position = Vector2(-1892, 2374)
 
 [node name="Node2D141" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1984, 2310)
-
-[node name="Node2D142" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2110, 2310)
-
-[node name="Node2D143" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2238, 2310)
+position = Vector2(-2022, 2374)
 
 [node name="Node2D50" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(-1904.5, 447.5)
@@ -479,16 +447,18 @@ position = Vector2(-2416.5, 447.5)
 [node name="Node2D55" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(-2544.5, 447.5)
 
-[node name="Node2D56" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2868.5, 511.5)
-scale = Vector2(0.24, 1)
+[node name="Node2D110" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+position = Vector2(-2664, 447.5)
+
+[node name="Node2D111" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+position = Vector2(-2792, 447.5)
 
 [node name="Node2D128" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1710.5, 37)
+position = Vector2(-1710.5, -64)
 scale = Vector2(0.24, 1)
 
 [node name="Node2D173" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1451, 203.5)
+position = Vector2(-1451, 173)
 scale = Vector2(0.24, 1)
 
 [node name="Node2D57" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
@@ -498,31 +468,31 @@ position = Vector2(-1646.5, 447.5)
 position = Vector2(-1774.5, 447.5)
 
 [node name="Node2D59" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-382.5, 239.5)
+position = Vector2(-449.5, 239.5)
 
 [node name="Node2D60" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-510.5, 239.5)
+position = Vector2(-577.5, 239.5)
 
 [node name="Node2D61" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-640.5, 239.5)
+position = Vector2(-707.5, 239.5)
 
 [node name="Node2D62" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-766.5, 239.5)
+position = Vector2(-833.5, 239.5)
 
 [node name="Node2D63" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-894.5, 239.5)
+position = Vector2(-961.5, 239.5)
 
 [node name="Node2D64" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1022.5, 239.5)
+position = Vector2(-1089.5, 239.5)
 
 [node name="Node2D65" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1152.5, 239.5)
+position = Vector2(-1219.5, 239.5)
 
 [node name="Node2D66" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-124.5, 239.5)
+position = Vector2(-191.5, 239.5)
 
 [node name="Node2D67" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-252.5, 239.5)
+position = Vector2(-319.5, 239.5)
 
 [node name="Node2D175" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(1859, 1060)
@@ -772,5 +742,7 @@ position = Vector2(600, -700)
 
 [node name="Player" parent="." instance=ExtResource("5_rv1yg")]
 position = Vector2(-3583, 1673)
-move_speed = 600.0
-jump_strength = 900.0
+mass = 10.0
+gravity_scale = 5.0
+move_speed = 900.0
+jump_strength = 2200.0
