@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://7nxtktkdnm8s"]
+
+[ext_resource type="Texture2D" uid="uid://sngiwsok8ocm" path="res://Rick Assets/Floor/Striped/stripedfloorEdge.png" id="1_mtxg7"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(256, 256)
+scale = Vector2(2, 2)
+texture = ExtResource("1_mtxg7")
