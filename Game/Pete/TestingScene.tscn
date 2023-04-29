@@ -10,14 +10,23 @@ position = Vector2(-211, 547)
 scale = Vector2(24.12, 1)
 
 [node name="TestCollider2" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(164, 288)
+position = Vector2(1253, 293)
 scale = Vector2(1.62822, 1.62822)
 
 [node name="TestCollider3" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(573, 221)
+position = Vector2(853, 136)
 scale = Vector2(1.62822, 1.62822)
 
+[node name="TestCollider4" parent="." instance=ExtResource("2_iv32r")]
+position = Vector2(1249, 78)
+scale = Vector2(1.62822, 1.62822)
+
+[node name="TestCollider5" parent="." instance=ExtResource("2_iv32r")]
+position = Vector2(-741, 531)
+rotation = 0.785398
+scale = Vector2(3.42756, 3.42756)
+
 [node name="Player" parent="." instance=ExtResource("1_mnxmo")]
-position = Vector2(354, 163)
+position = Vector2(465, 155)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
