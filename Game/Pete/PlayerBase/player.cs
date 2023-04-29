@@ -59,12 +59,14 @@ public partial class player : RigidBody2D
         void UpdateGrounded()
         {
             var grounded_transform = Godot.Transform2D.Identity;
-            grounded_transform.Origin = new Vector2(GlobalTransform.Origin.X, GlobalTransform.Origin.Y + grounded_offset);
+            grounded_transform.Origin = new Vector2(GlobalTransform.Origin.X, GlobalTransform.Origin.Y + grounded_offset - 20);
             grounded_query_params.Transform = grounded_transform;
-            grounded = Physics.TryOverlapShape2D(grounded_query_params, node_buffer, debug: true);
+            grounded_query_params.Motion = Vector2.Up * grounded_offset * 2f;
+
+            grounded = Physics.TryShapeCast2D(grounded_query_params, out var result, debug: true);
         }
     }
-
+    
     PhysicsShapeQueryParameters2D grounded_query_params;
 
     float move_direction;
@@ -97,7 +99,7 @@ public partial class player : RigidBody2D
                     animator_legs.Play("Walk");
                 }
 
-                LinearVelocity = new Vector2(move_direction * move_speed, -10f);
+                LinearVelocity = new Vector2(move_direction * move_speed, -20f);
 
                 if (move_direction.Abs() < .3f) state_machine.next = PlayerStates.Idle;
                 if (!grounded) state_machine.next = PlayerStates.Falling;
@@ -138,8 +140,6 @@ public partial class player : RigidBody2D
                 state_machine.next = PlayerStates.Idle;
                 break;
         }
-
-
 
         bool CanWallJump()
         {
