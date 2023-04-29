@@ -1,49 +1,50 @@
-[gd_scene load_steps=10 format=3 uid="uid://c87w1wdiewidn"]
+[gd_scene load_steps=10 format=3 uid="uid://b36dhs6q8cfii"]
 
-[ext_resource type="Texture2D" uid="uid://gfk2smxnke3h" path="res://Pete/PlayerBase/PlayerBase.png" id="1_kyesx"]
+[ext_resource type="Texture2D" uid="uid://gfk2smxnke3h" path="res://Pete/PlayerBase/PlayerBase.png" id="1_cgobr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t6wv6"]
 radius = 36.0
 height = 202.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rijjv"]
-atlas = ExtResource("1_kyesx")
+atlas = ExtResource("1_cgobr")
 region = Rect2(88.2917, 49.4789, 220.945, 193.327)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o44nb"]
-atlas = ExtResource("1_kyesx")
+atlas = ExtResource("1_cgobr")
 region = Rect2(97.7269, 259.984, 227.85, 255.468)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ma5sn"]
-atlas = ExtResource("1_kyesx")
+atlas = ExtResource("1_cgobr")
 region = Rect2(484.381, 349.743, 131.186, 283.086)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_munnq"]
-atlas = ExtResource("1_kyesx")
+atlas = ExtResource("1_cgobr")
 region = Rect2(470.572, 42.4909, 148.448, 272.729)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6d5b"]
-atlas = ExtResource("1_kyesx")
+atlas = ExtResource("1_cgobr")
 region = Rect2(90.8223, 549.975, 286.539, 138.091)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1dxku"]
-atlas = ExtResource("1_kyesx")
+atlas = ExtResource("1_cgobr")
 region = Rect2(94.2746, 712.232, 120.83, 286.539)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqivx"]
-atlas = ExtResource("1_kyesx")
+atlas = ExtResource("1_cgobr")
 region = Rect2(291.054, 698.423, 124.282, 289.991)
 
-[node name="Control" type="RigidBody2D"]
-position = Vector2(0, 4)
+[node name="RigidBody2D" type="RigidBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -104)
 shape = SubResource("CapsuleShape2D_t6wv6")
 
 [node name="AnimatorTorso" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
 
 [node name="AnimatorHips" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
 
 [node name="Torso" type="Node2D" parent="."]
 position = Vector2(-1, -108)
