@@ -99,5 +99,5 @@ angular_velocity_min = -3.0
 angular_velocity_max = 3.0
 orbit_velocity_min = -0.05
 orbit_velocity_max = 0.05
-scale_amount_min = 0.5
-scale_amount_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
