@@ -300,14 +300,11 @@ class ObjectDrawer
             if (input == null) input = "";
 
             bool updated;
-            if (updated = control.item.TryGetValue((bool)input, out bool new_value))
+            if (updated = control.item.TryGetValue((bool)input, out bool new_value, "ON", "OFF"))
             {
                 input = output = new_value;
                 return true;
             }
-
-            control.item.ButtonPressed = (bool)input;
-            control.item.Text = control.item.ButtonPressed ? "ON" : "OFF";
             output = default;
             return false;
         }
