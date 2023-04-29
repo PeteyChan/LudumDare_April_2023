@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dltlm5mchxiuq"]
+[gd_scene load_steps=5 format=3 uid="uid://byt724vpwg6u2"]
 
+[ext_resource type="PackedScene" uid="uid://cdnlr4rlweagm" path="res://Rick Assets/StreetLamp01.tscn" id="2_rueyj"]
 [ext_resource type="PackedScene" uid="uid://b5cogeuwci3g3" path="res://Rick Assets/Prefabs/Bridge01.tscn" id="3_baena"]
 [ext_resource type="PackedScene" uid="uid://bknkqkth10dww" path="res://Rick Assets/Prefabs/TestGround.tscn" id="4_n8a8d"]
 [ext_resource type="PackedScene" uid="uid://b36dhs6q8cfii" path="res://Pete/PlayerBase/player.tscn" id="5_rv1yg"]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(-612, -544)
 
 [node name="Master World" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -39,47 +39,29 @@ position = Vector2(-500, 1286)
 [node name="Node2D10" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(-630, 1286)
 
-[node name="Node2D15" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-761, 1286)
-
-[node name="Node2D16" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-889, 1286)
-
-[node name="Node2D17" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1017, 1286)
-
-[node name="Node2D18" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1147, 1286)
-
 [node name="Node2D150" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-718, 2276)
+position = Vector2(59, 2276)
 
 [node name="Node2D151" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-846, 2276)
+position = Vector2(-69, 2276)
 
 [node name="Node2D152" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-974, 2276)
+position = Vector2(-197, 2276)
 
 [node name="Node2D153" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1104, 2276)
-
-[node name="Node2D19" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1273, 1286)
-
-[node name="Node2D20" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1401, 1286)
+position = Vector2(-327, 2276)
 
 [node name="Node2D21" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1529, 1286)
+position = Vector2(-752, 1286)
 
 [node name="Node2D22" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1659, 1286)
+position = Vector2(-882, 1286)
 
 [node name="Node2D24" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1792, 1286)
+position = Vector2(-1015, 1286)
 
 [node name="Node2D23" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1990, 1373)
+position = Vector2(-1213, 1373)
 rotation = -0.785398
 scale = Vector2(3.13884, 0.209668)
 
@@ -132,184 +114,178 @@ rotation = 0.785398
 scale = Vector2(3.13884, 0.209668)
 
 [node name="Node2D38" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2895, 1522)
+position = Vector2(-2118, 1522)
 rotation = -0.785398
 scale = Vector2(1.44178, 0.209668)
 
 [node name="Node2D25" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2134, 1511)
+position = Vector2(-1357, 1511)
 
 [node name="Node2D26" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2264, 1511)
+position = Vector2(-1487, 1511)
 
 [node name="Node2D27" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2390, 1511)
+position = Vector2(-1613, 1511)
 
 [node name="Node2D28" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2518, 1511)
+position = Vector2(-1741, 1511)
 
 [node name="Node2D29" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2646, 1511)
+position = Vector2(-1869, 1511)
 
 [node name="Node2D30" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2776, 1511)
+position = Vector2(-1999, 1511)
 
 [node name="Node2D35" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3656, 1765)
+position = Vector2(-2879, 1765)
 
 [node name="Node2D36" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3784, 1765)
+position = Vector2(-3007, 1765)
 
 [node name="Node2D37" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3914, 1765)
+position = Vector2(-3137, 1765)
 
 [node name="Node2D40" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4040, 1765)
+position = Vector2(-3263, 1765)
 
 [node name="Node2D41" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4168, 1765)
+position = Vector2(-3391, 1765)
 
 [node name="Node2D42" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4425, 1893)
+position = Vector2(-3648, 1893)
 
 [node name="Node2D82" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4168, 1893)
+position = Vector2(-3391, 1893)
 
 [node name="Node2D83" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4425, 2021)
+position = Vector2(-3648, 2021)
 
 [node name="Node2D84" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4168, 2021)
+position = Vector2(-3391, 2021)
 
 [node name="Node2D43" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4426, 1765)
+position = Vector2(-3649, 1765)
 
 [node name="Node2D230" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 modulate = Color(0.282353, 0.854902, 0, 1)
-position = Vector2(-4295, 1713)
+position = Vector2(-3518, 1713)
 scale = Vector2(1, 0.2)
 
 [node name="Node2D85" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4168, 2148)
+position = Vector2(-3391, 2148)
 
 [node name="Node2D86" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4425, 2276)
+position = Vector2(-3648, 2276)
 
 [node name="Node2D87" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4168, 2276)
+position = Vector2(-3391, 2276)
 
 [node name="Node2D88" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4425, 2404)
+position = Vector2(-3648, 2404)
 
 [node name="Node2D119" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4425, 2532)
+position = Vector2(-3648, 2532)
 
 [node name="Node2D90" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4426, 2148)
+position = Vector2(-3649, 2148)
 
 [node name="Node2D145" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1220, 2276)
+position = Vector2(-443, 2276)
 
 [node name="Node2D146" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1220, 2403)
+position = Vector2(-443, 2403)
 
 [node name="Node2D148" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1220, 2531)
+position = Vector2(-443, 2531)
 
 [node name="Node2D31" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3024, 1639)
+position = Vector2(-2247, 1639)
 
 [node name="Node2D32" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3152, 1639)
+position = Vector2(-2375, 1639)
 
 [node name="Node2D44" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3655, 1350)
+position = Vector2(-2816, 1439.5)
+scale = Vector2(1.73715, 0.22)
 
 [node name="Node2D45" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3783, 1350)
-
-[node name="Node2D128" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3526, 1350)
+position = Vector2(-2640.5, 1139)
+scale = Vector2(2.01789, 0.155846)
 
 [node name="Node2D46" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3656, 1012)
-
-[node name="Node2D47" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3784, 1012)
-
-[node name="Node2D48" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3656, 700)
-
-[node name="Node2D49" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3784, 700)
+position = Vector2(-2608.5, 857)
+scale = Vector2(3.75772, 0.0999998)
 
 [node name="Node2D39" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3269, 1648)
+position = Vector2(-2492, 1648)
 rotation = -0.785398
 scale = Vector2(1.44178, 0.209668)
 
 [node name="Node2D33" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3398, 1765)
+position = Vector2(-2621, 1765)
 
 [node name="Node2D34" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3526, 1765)
+position = Vector2(-2749, 1765)
 
 [node name="Node2D80" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4688, 1765)
+position = Vector2(-3911, 1765)
 
 [node name="Node2D81" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4816, 1765)
+position = Vector2(-4039, 1765)
 
 [node name="Node2D89" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4946, 1765)
+position = Vector2(-4169, 1765)
 
 [node name="Node2D94" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-5072, 1765)
+position = Vector2(-4295, 1765)
 
 [node name="Node2D120" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-5072, 1636)
+position = Vector2(-4295, 1636)
 
 [node name="Node2D121" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-5072, 1510)
+position = Vector2(-4295, 1510)
 
 [node name="Node2D122" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-5072, 1380)
+position = Vector2(-4295, 1380)
 
 [node name="Node2D123" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-5072, 1253)
+position = Vector2(-4295, 1253)
 
 [node name="Node2D124" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-5072, 1124)
+position = Vector2(-4295, 1124)
 
 [node name="Node2D125" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-5072, 998)
+position = Vector2(-4295, 998)
 
 [node name="Node2D126" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-5072, 868)
+position = Vector2(-4295, 868)
 
 [node name="Node2D127" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4101, 1203)
+position = Vector2(-3131.5, 1329)
 
 [node name="Node2D129" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4101, 1077)
+position = Vector2(-3131.5, 1203)
 
 [node name="Node2D130" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4101, 947)
+position = Vector2(-3131.5, 1073)
 
 [node name="Node2D131" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4101, 820)
+position = Vector2(-3131.5, 946)
 
 [node name="Node2D132" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4101, 691)
+position = Vector2(-3131.5, 817)
 
 [node name="Node2D133" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4101, 565)
+position = Vector2(-3131.5, 691)
 
 [node name="Node2D134" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4101, 435)
+position = Vector2(-3131.5, 561)
 
-[node name="Node2D135" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2134, 383)
+[node name="Node2D167" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+position = Vector2(-3131.5, 433.5)
+
+[node name="Node2D168" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+position = Vector2(-3131.5, 303.5)
 
 [node name="Node2D195" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(1342, 1137)
@@ -347,86 +323,80 @@ position = Vector2(1342, -146)
 [node name="Node2D206" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(1342, -273)
 
-[node name="Node2D136" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2134, 257)
-
-[node name="Node2D137" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2134, 127)
-
 [node name="Node2D95" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4558, 1765)
+position = Vector2(-3781, 1765)
 
 [node name="Node2D91" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4167, 2660)
+position = Vector2(-3390, 2660)
 
 [node name="Node2D92" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4295, 2660)
+position = Vector2(-3518, 2660)
 
 [node name="Node2D93" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4425, 2660)
+position = Vector2(-3648, 2660)
 
 [node name="Node2D96" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3909, 2788)
+position = Vector2(-3132, 2788)
 
 [node name="Node2D97" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-4037, 2788)
+position = Vector2(-3260, 2788)
 
 [node name="Node2D98" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3271, 2660)
+position = Vector2(-2494, 2660)
 
 [node name="Node2D99" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3399, 2788)
+position = Vector2(-2622, 2788)
 
 [node name="Node2D100" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3529, 2788)
+position = Vector2(-2752, 2788)
 
 [node name="Node2D101" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3655, 2788)
+position = Vector2(-2878, 2788)
 
 [node name="Node2D102" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3783, 2788)
+position = Vector2(-3006, 2788)
 
 [node name="Node2D103" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3013, 2660)
+position = Vector2(-2236, 2660)
 
 [node name="Node2D104" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3141, 2660)
+position = Vector2(-2364, 2660)
 
 [node name="Node2D105" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2375, 2660)
+position = Vector2(-1598, 2660)
 
 [node name="Node2D106" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2503, 2660)
+position = Vector2(-1726, 2660)
 
 [node name="Node2D107" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2633, 2660)
+position = Vector2(-1856, 2660)
 
 [node name="Node2D108" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2759, 2660)
+position = Vector2(-1982, 2660)
 
 [node name="Node2D109" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2887, 2660)
+position = Vector2(-2110, 2660)
 
 [node name="Node2D110" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2117, 2660)
+position = Vector2(-1340, 2660)
 
 [node name="Node2D111" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2245, 2660)
+position = Vector2(-1468, 2660)
 
 [node name="Node2D112" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1479, 2660)
+position = Vector2(-702, 2660)
 
 [node name="Node2D113" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1607, 2660)
+position = Vector2(-830, 2660)
 
 [node name="Node2D114" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1737, 2660)
+position = Vector2(-960, 2660)
 
 [node name="Node2D115" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1863, 2660)
+position = Vector2(-1086, 2660)
 
 [node name="Node2D116" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1991, 2660)
+position = Vector2(-1214, 2660)
 
 [node name="Node2D156" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(3641, 1011)
@@ -468,82 +438,91 @@ position = Vector2(6007, 755)
 position = Vector2(6007, 627)
 
 [node name="Node2D117" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1221, 2660)
+position = Vector2(-444, 2660)
 
 [node name="Node2D118" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1349, 2660)
+position = Vector2(-572, 2660)
 
 [node name="Node2D138" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3141, 2310)
+position = Vector2(-2364, 2310)
 
 [node name="Node2D139" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2503, 2310)
+position = Vector2(-1726, 2310)
 
 [node name="Node2D140" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2631, 2310)
+position = Vector2(-1854, 2310)
 
 [node name="Node2D141" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2761, 2310)
+position = Vector2(-1984, 2310)
 
 [node name="Node2D142" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2887, 2310)
+position = Vector2(-2110, 2310)
 
 [node name="Node2D143" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3015, 2310)
+position = Vector2(-2238, 2310)
 
 [node name="Node2D50" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2627, 501)
+position = Vector2(-1904.5, 447.5)
 
 [node name="Node2D51" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2755, 501)
+position = Vector2(-2032.5, 447.5)
 
 [node name="Node2D52" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2885, 501)
+position = Vector2(-2162.5, 447.5)
 
 [node name="Node2D53" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3011, 501)
+position = Vector2(-2288.5, 447.5)
 
 [node name="Node2D54" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3139, 501)
+position = Vector2(-2416.5, 447.5)
 
 [node name="Node2D55" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3267, 501)
+position = Vector2(-2544.5, 447.5)
 
 [node name="Node2D56" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-3397, 501)
+position = Vector2(-2868.5, 511.5)
+scale = Vector2(0.24, 1)
+
+[node name="Node2D128" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+position = Vector2(-1710.5, 37)
+scale = Vector2(0.24, 1)
+
+[node name="Node2D173" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+position = Vector2(-1451, 203.5)
+scale = Vector2(0.24, 1)
 
 [node name="Node2D57" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2369, 501)
+position = Vector2(-1646.5, 447.5)
 
 [node name="Node2D58" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2497, 501)
+position = Vector2(-1774.5, 447.5)
 
 [node name="Node2D59" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1105, 293)
+position = Vector2(-382.5, 239.5)
 
 [node name="Node2D60" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1233, 293)
+position = Vector2(-510.5, 239.5)
 
 [node name="Node2D61" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1363, 293)
+position = Vector2(-640.5, 239.5)
 
 [node name="Node2D62" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1489, 293)
+position = Vector2(-766.5, 239.5)
 
 [node name="Node2D63" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1617, 293)
+position = Vector2(-894.5, 239.5)
 
 [node name="Node2D64" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1745, 293)
+position = Vector2(-1022.5, 239.5)
 
 [node name="Node2D65" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-1875, 293)
+position = Vector2(-1152.5, 239.5)
 
 [node name="Node2D66" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-847, 293)
+position = Vector2(-124.5, 239.5)
 
 [node name="Node2D67" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-975, 293)
+position = Vector2(-252.5, 239.5)
 
 [node name="Node2D175" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 position = Vector2(1859, 1060)
@@ -707,7 +686,91 @@ position = Vector2(1406.5, 1611)
 
 [node name="Level" type="Node2D" parent="Master World"]
 
+[node name="StreetLamp03" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(869, -700)
+
+[node name="StreetLamp05" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(5391, 245)
+
+[node name="StreetLamp08" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(1839, 809)
+
+[node name="StreetLamp15" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(1578, 809)
+
+[node name="StreetLamp16" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(2355, 809)
+
+[node name="StreetLamp17" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(2614, 809)
+
+[node name="StreetLamp18" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(3022, 522)
+
+[node name="StreetLamp19" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(3280, 522)
+
+[node name="StreetLamp20" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(3688, 249)
+
+[node name="StreetLamp21" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(4074, 249)
+
+[node name="StreetLamp22" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(4461, 249)
+
+[node name="StreetLamp23" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(4840, 249)
+
+[node name="StreetLamp09" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(1192, 522)
+
+[node name="StreetLamp10" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(805, 522)
+
+[node name="StreetLamp11" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(318, 522)
+
+[node name="StreetLamp12" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(-69, 522)
+
+[node name="StreetLamp26" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(-454, 522)
+
+[node name="StreetLamp24" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(-795, 748)
+
+[node name="StreetLamp25" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(-1180, 748)
+
+[node name="StreetLamp27" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(-1750, 875)
+
+[node name="StreetLamp28" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(-2058, 999)
+
+[node name="StreetLamp29" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(-2444, 999)
+
+[node name="StreetLamp30" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(-2827, 999)
+
+[node name="StreetLamp31" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(-3086, 999)
+
+[node name="StreetLamp32" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(-3477, 999)
+
+[node name="StreetLamp06" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(5807, 245)
+
+[node name="StreetLamp07" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(6210, 245)
+
+[node name="StreetLamp04" parent="Master World/Level" instance=ExtResource("2_rueyj")]
+position = Vector2(600, -700)
+
 [node name="Player" parent="." instance=ExtResource("5_rv1yg")]
-position = Vector2(1125, 921)
-move_speed = 500.0
-jump_strength = 600.0
+position = Vector2(-3583, 1673)
+move_speed = 600.0
+jump_strength = 900.0
