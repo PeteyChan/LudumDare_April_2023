@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://byt724vpwg6u2"]
+[gd_scene load_steps=4 format=3 uid="uid://dltlm5mchxiuq"]
 
-[ext_resource type="PackedScene" uid="uid://cdnlr4rlweagm" path="res://Rick Assets/StreetLamp01.tscn" id="2_rueyj"]
 [ext_resource type="PackedScene" uid="uid://b5cogeuwci3g3" path="res://Rick Assets/Prefabs/Bridge01.tscn" id="3_baena"]
 [ext_resource type="PackedScene" uid="uid://bknkqkth10dww" path="res://Rick Assets/Prefabs/TestGround.tscn" id="4_n8a8d"]
 [ext_resource type="PackedScene" uid="uid://b36dhs6q8cfii" path="res://Pete/PlayerBase/player.tscn" id="5_rv1yg"]
@@ -707,96 +706,6 @@ position = Vector2(1536.5, 1611)
 position = Vector2(1406.5, 1611)
 
 [node name="Level" type="Node2D" parent="Master World"]
-
-[node name="StreetLamp03" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(869, -700)
-
-[node name="StreetLamp05" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(5391, 245)
-
-[node name="StreetLamp08" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(1839, 809)
-
-[node name="StreetLamp15" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(1578, 809)
-
-[node name="StreetLamp16" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(2355, 809)
-
-[node name="StreetLamp17" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(2614, 809)
-
-[node name="StreetLamp18" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(3022, 522)
-
-[node name="StreetLamp19" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(3280, 522)
-
-[node name="StreetLamp20" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(3688, 249)
-
-[node name="StreetLamp21" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(4074, 249)
-
-[node name="StreetLamp22" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(4461, 249)
-
-[node name="StreetLamp23" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(4840, 249)
-
-[node name="StreetLamp09" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(1192, 522)
-
-[node name="StreetLamp10" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(805, 522)
-
-[node name="StreetLamp11" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(318, 522)
-
-[node name="StreetLamp12" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(-69, 522)
-
-[node name="StreetLamp13" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(-455, 522)
-
-[node name="StreetLamp14" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(-839, 522)
-
-[node name="StreetLamp26" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(-1231, 522)
-
-[node name="StreetLamp24" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(-1572, 748)
-
-[node name="StreetLamp25" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(-1957, 748)
-
-[node name="StreetLamp27" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(-2527, 875)
-
-[node name="StreetLamp28" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(-2835, 999)
-
-[node name="StreetLamp29" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(-3221, 999)
-
-[node name="StreetLamp30" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(-3604, 999)
-
-[node name="StreetLamp31" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(-3863, 999)
-
-[node name="StreetLamp32" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(-4254, 999)
-
-[node name="StreetLamp06" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(5807, 245)
-
-[node name="StreetLamp07" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(6210, 245)
-
-[node name="StreetLamp04" parent="Master World/Level" instance=ExtResource("2_rueyj")]
-position = Vector2(600, -700)
 
 [node name="Player" parent="." instance=ExtResource("5_rv1yg")]
 position = Vector2(1125, 921)
