@@ -61,22 +61,12 @@ public partial class player : RigidBody2D
             var grounded_transform = Godot.Transform2D.Identity;
             grounded_transform.Origin = new Vector2(GlobalTransform.Origin.X, GlobalTransform.Origin.Y + grounded_offset - 20);
             grounded_query_params.Transform = grounded_transform;
-
-            Debug.DrawCircle2D(grounded_query_params.Transform.Origin, 5f, Colors.Orange);
-
             grounded_query_params.Motion = Vector2.Up * grounded_offset * 2f;
 
             grounded = Physics.TryShapeCast2D(grounded_query_params, out var result, debug: true);
-
-            ground_normal = result.normal;
-            if (!grounded) ground_normal = default;
-
-            Debug.Label("normal", ground_normal);
         }
     }
-
-    Vector2? ground_normal;
-
+    
     PhysicsShapeQueryParameters2D grounded_query_params;
 
     float move_direction;
@@ -109,11 +99,7 @@ public partial class player : RigidBody2D
                     animator_legs.Play("Walk");
                 }
 
-                if (ground_normal.HasValue)
-                {
-                }
-
-                LinearVelocity = new Vector2(move_direction * move_speed, -10f);
+                LinearVelocity = new Vector2(move_direction * move_speed, -20f);
 
                 if (move_direction.Abs() < .3f) state_machine.next = PlayerStates.Idle;
                 if (!grounded) state_machine.next = PlayerStates.Falling;

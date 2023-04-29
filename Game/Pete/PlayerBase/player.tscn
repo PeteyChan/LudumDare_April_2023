@@ -1,7 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://b36dhs6q8cfii"]
+[gd_scene load_steps=22 format=3 uid="uid://b36dhs6q8cfii"]
 
 [ext_resource type="Texture2D" uid="uid://gfk2smxnke3h" path="res://Pete/PlayerBase/PlayerBase.png" id="1_cgobr"]
 [ext_resource type="Script" path="res://Pete/PlayerBase/player.cs" id="1_ot50c"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ph2xn"]
+friction = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t6wv6"]
 radius = 36.0
@@ -393,6 +396,7 @@ atlas = ExtResource("1_cgobr")
 region = Rect2(94.2746, 712.232, 120.83, 286.539)
 
 [node name="Player" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_ph2xn")
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_ot50c")
