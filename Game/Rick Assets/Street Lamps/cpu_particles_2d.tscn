@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cuhwjw8kiq65y"]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+amount = 5
+lifetime = 5.0
+emission_shape = 1
+emission_sphere_radius = 35.02
+spread = 76.97
+gravity = Vector2(0, 5)
+initial_velocity_max = 0.5
+angular_velocity_min = -5.0
+angular_velocity_max = 5.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+linear_accel_min = -1.0
+linear_accel_max = 1.0
+radial_accel_min = -10.0
+radial_accel_max = 10.0
+tangential_accel_min = -10.0
+tangential_accel_max = 10.0
+damping_min = 7.89
+damping_max = 32.24
+scale_amount_min = 0.3
+scale_amount_max = 0.5
