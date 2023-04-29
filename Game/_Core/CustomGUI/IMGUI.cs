@@ -155,8 +155,7 @@ public static class ImmediateGUI_Extensions
     where T : IMGUI_Interface
     {
         var toggle = self.Get<IMGUI_Toggle>();
-        var updated = toggle.TryGetValue(value, out value);
-        toggle.Text = value ? on_text : off_text;
+        var updated = toggle.TryGetValue(value, out value, on_text, off_text);
         return updated;
     }
 
@@ -166,8 +165,7 @@ public static class ImmediateGUI_Extensions
         var toggle = self.Get<IMGUI_Labeled<IMGUI_Toggle>>();
         toggle.label.Text = label;
 
-        var updated = toggle.item.TryGetValue(value, out value);
-        toggle.item.Text = value ? on_text : off_text;
+        var updated = toggle.item.TryGetValue(value, out value, on_text, off_text);
         return updated;
     }
 
@@ -197,6 +195,16 @@ public static class ImmediateGUI_Extensions
         bool updated;
         updated = item.drawer.TryUpdate(value?.GetType(), value, out var output);
         return updated;
+    }
+
+    public static bool Property<T>(this T self, string label, object input_value, out object output_value)
+        where T : IMGUI_Interface
+    {
+        var item = self.Get<IMGUI_PropertyDrawer>();
+        item.drawer.Expand_Struct_Drawer = true;
+
+        item.drawer.Label = label;
+        return item.drawer.TryUpdate(input_value?.GetType(), input_value, out output_value);
     }
 
     public static T Property<T, PropertyType>(this T self, string label, PropertyType current_value, Action<PropertyType> on_change)
@@ -402,24 +410,26 @@ namespace Internal.IMGUI
     {
         public IMGUI_Toggle()
         {
-            ToggleMode = true;
-            Toggled += value => ReleaseFocus();
+            ButtonDown += () =>
+            {
+                updated = true;
+                ReleaseFocus();
+            };
         }
 
-        bool toggle_value;
+        bool updated;
 
-        public bool TryGetValue(bool current, out bool value)
+        public bool TryGetValue(bool current, out bool value, string on, string off)
         {
-            bool updated = toggle_value != ButtonPressed;
             if (updated)
             {
-                current = ButtonPressed;
-                toggle_value = ButtonPressed;
+                value = !current;
+                updated = false;
+                return true;
             }
+            else Text = current ? on : off;
             value = current;
-            ButtonPressed = value;
-            toggle_value = value;
-            return updated;
+            return false;
         }
     }
 
