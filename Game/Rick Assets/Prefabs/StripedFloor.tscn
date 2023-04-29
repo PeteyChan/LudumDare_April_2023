@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bofvv1a8bo8n2"]
+
+[ext_resource type="Texture2D" uid="uid://bf6enqm7ry0j3" path="res://Rick Assets/Floor/Striped/stripedfloor.png" id="1_kntrd"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(303, 303)
+texture = ExtResource("1_kntrd")
