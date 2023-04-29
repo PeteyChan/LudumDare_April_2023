@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdnlr4rlweagm"]
+
+[ext_resource type="Texture2D" uid="uid://cgjvqwqwiwnei" path="res://Rick Assets/Street Lamps/Lamp01.png" id="1_cj5pr"]
+[ext_resource type="Texture2D" uid="uid://b7kclqbumw1yp" path="res://Rick Assets/Street Lamps/BlueRadialGlow.png" id="2_f0jud"]
+[ext_resource type="Texture2D" uid="uid://dwd8se67trwl6" path="res://Rick Assets/Street Lamps/LampVolume.png" id="3_bgw01"]
+
+[node name="StreetLamp01" type="Node2D"]
+
+[node name="Lamp01" type="Node2D" parent="."]
+position = Vector2(111, 633)
+scale = Vector2(0.3, 0.3)
+
+[node name="Lamp02" type="Sprite2D" parent="Lamp01"]
+position = Vector2(0, -290)
+texture = ExtResource("1_cj5pr")
+
+[node name="BlueRadialGlow" type="Sprite2D" parent="Lamp01/Lamp02"]
+self_modulate = Color(1, 1, 1, 0.164706)
+position = Vector2(0, -233)
+texture = ExtResource("2_f0jud")
+
+[node name="LampVolume" type="Sprite2D" parent="Lamp01/Lamp02/BlueRadialGlow"]
+self_modulate = Color(1, 1, 1, 0.12549)
+position = Vector2(5, 201)
+texture = ExtResource("3_bgw01")
