@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnpke8lwtoj4e"]
+
+[ext_resource type="Texture2D" uid="uid://fad3gfg7qeot" path="res://Rick Assets/Walls/Concrete/ConcreteWall01.png" id="1_ti0ks"]
+[ext_resource type="Texture2D" uid="uid://b7kclqbumw1yp" path="res://Rick Assets/Street Lamps/BlueRadialGlow.png" id="2_f3aer"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ConcreteWall01" type="Sprite2D" parent="."]
+position = Vector2(91, -91)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_ti0ks")
+
+[node name="BlueRadialGlow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.372549, 0.933333, 0.486275)
+position = Vector2(86, -13)
+scale = Vector2(0.572835, 0.231918)
+texture = ExtResource("2_f3aer")
