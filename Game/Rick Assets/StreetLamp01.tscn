@@ -70,6 +70,7 @@ _data = {
 [node name="StreetLamp01" type="Node2D"]
 
 [node name="Lamp01" type="Node2D" parent="."]
+z_index = -50
 scale = Vector2(0.3, 0.3)
 
 [node name="Lamp02" type="Sprite2D" parent="Lamp01"]
