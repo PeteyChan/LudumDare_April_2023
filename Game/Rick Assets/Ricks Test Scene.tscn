@@ -30,7 +30,7 @@ scale = Vector2(1.5, 1.5)
 
 [node name="Node2D2" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
 modulate = Color(0, 0.729412, 0.258824, 1)
-position = Vector2(-6.10352e-05, 1251)
+position = Vector2(-0.5, 1259.5)
 scale = Vector2(2.84, 0.56)
 
 [node name="Node2D7" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
@@ -775,7 +775,7 @@ scale = Vector2(0.7, 0.7)
 [node name="Player" parent="." instance=ExtResource("5_rv1yg")]
 z_index = -11
 z_as_relative = false
-position = Vector2(10468, 490)
+position = Vector2(1125, 1030)
 mass = 10.0
 gravity_scale = 5.0
 move_speed = 900.0
