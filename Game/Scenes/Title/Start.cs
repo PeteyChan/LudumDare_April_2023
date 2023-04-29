@@ -8,7 +8,7 @@ public partial class Start : Button
     {
         this.OnButtonDown(() =>
         {
-			Scene.Load("res://Scenes/Game/Game.tscn");
+            Debug.Console.Send("Load Ricks Level");
         });
     }
 }
