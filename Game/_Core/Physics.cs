@@ -235,7 +235,7 @@ public static class Physics
             trans.Origin += parameters.Motion * cast[1];
             parameters.Transform = trans;
             parameters.Motion = default;
-            
+
             var info = space2D.GetRestInfo(parameters);
             hit = info.Count > 0;
             if (hit)

@@ -160,10 +160,13 @@ public static partial class GodotExtensions
         return node;
     }
 
-    public static bool TryFindParent<T>(this Godot.Node node, out T value) where T : class
+    public static bool TryFindParent<T>(this Godot.Node node, out T value, bool include_self = true) where T : class
     {
         if (node.IsValid())
         {
+            value = node as T;
+            if (value != null) return true;
+
             if (node.GetParent() is T target)
             {
                 value = target;
