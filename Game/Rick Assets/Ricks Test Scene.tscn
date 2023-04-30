@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://byt724vpwg6u2"]
+[gd_scene load_steps=13 format=3 uid="uid://byt724vpwg6u2"]
 
 [ext_resource type="PackedScene" uid="uid://cdnlr4rlweagm" path="res://Rick Assets/StreetLamp01.tscn" id="2_rueyj"]
 [ext_resource type="PackedScene" uid="uid://b5cogeuwci3g3" path="res://Rick Assets/Prefabs/Bridge01.tscn" id="3_baena"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://sngiwsok8ocm" path="res://Rick Assets/Floor/Striped/stripedfloorEdge.png" id="7_jprn4"]
 [ext_resource type="Texture2D" uid="uid://rk6h2v7tahny" path="res://Rick Assets/Floor/Striped/stripedfloorEdgeL.png" id="8_y0j6x"]
 [ext_resource type="Texture2D" uid="uid://bd6nxy4ghy4m5" path="res://Rick Assets/Floor/ConcreteEdge/ConcreteEdgeSide.png" id="10_jo0jv"]
+[ext_resource type="PackedScene" uid="uid://bvfbkqkcfli7m" path="res://Rick Assets/Prefabs/PopUpShop.tscn" id="11_5e8f0"]
+[ext_resource type="Texture2D" uid="uid://xyuctgdb1vyk" path="res://Rick Assets/Environment/ChineseStore.png" id="12_q6b75"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -126,21 +128,27 @@ rotation = -0.785398
 scale = Vector2(1.44178, 0.209668)
 
 [node name="Node2D25" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+visible = false
 position = Vector2(-1357, 1511)
 
 [node name="Node2D26" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+visible = false
 position = Vector2(-1487, 1511)
 
 [node name="Node2D27" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+visible = false
 position = Vector2(-1613, 1511)
 
 [node name="Node2D28" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+visible = false
 position = Vector2(-1741, 1511)
 
 [node name="Node2D29" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+visible = false
 position = Vector2(-1869, 1511)
 
 [node name="Node2D30" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
+visible = false
 position = Vector2(-1999, 1511)
 
 [node name="Node2D35" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
@@ -214,11 +222,11 @@ position = Vector2(-2816, 1439.5)
 scale = Vector2(1.73715, 0.22)
 
 [node name="Node2D45" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2640.5, 1139)
+position = Vector2(-2691, 1139)
 scale = Vector2(2.01789, 0.155846)
 
 [node name="Node2D46" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
-position = Vector2(-2691, 797.5)
+position = Vector2(-2691, 859)
 scale = Vector2(1.95772, 0.0999998)
 
 [node name="Node2D39" parent="Master World/Collisions" instance=ExtResource("4_n8a8d")]
@@ -773,6 +781,246 @@ z_index = -12
 position = Vector2(-226.75, 261)
 scale = Vector2(0.7, 0.7)
 
+[node name="ConcreteEdge" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(1875.5, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge5" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(1670.5, 326.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge10" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(1542.5, 326.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge11" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(1209.5, 468)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge14" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(886.5, 468)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge15" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(758.5, 468)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge16" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(564, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge17" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(436, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge18" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(308, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge19" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(180, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge20" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(52, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge21" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-76, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge22" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-201.25, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge12" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(1337.5, 468)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge13" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(1420, 468)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge9" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(1752.75, 326.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge2" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(2003.5, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge3" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(2131.5, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge4" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(2259.5, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge6" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(2499.25, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge8" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(2372.25, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="ConcreteEdge7" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(2581.5, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_h33ji")
+
+[node name="Stripedfloor" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-437.25, 437)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_co8rd")
+
+[node name="Stripedfloor8" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-309.5, 437)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_co8rd")
+
+[node name="Stripedfloor2" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-564.5, 437)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_co8rd")
+
+[node name="Stripedfloorjoint" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-666.5, 437)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_irxju")
+
+[node name="Stripedfloorjoint2" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-861.75, 500.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_irxju")
+
+[node name="Stripedfloorjoint3" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-1317.5, 563.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_irxju")
+
+[node name="Stripedfloorjoint4" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-1445.5, 563.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_irxju")
+
+[node name="Stripedfloorjoint5" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-1573.5, 563.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_irxju")
+
+[node name="Stripedfloor3" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-1061.5, 563.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_co8rd")
+
+[node name="Stripedfloor4" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-1189.5, 563.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_co8rd")
+
+[node name="Stripedfloor5" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-1701.25, 563.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_co8rd")
+
+[node name="Stripedfloor6" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-1829.25, 563.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_co8rd")
+
+[node name="Stripedfloor7" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-1956, 563.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_co8rd")
+
+[node name="StripedfloorEdgeL" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-961, 500.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_y0j6x")
+
+[node name="StripedfloorEdgeL2" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-766, 437)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_y0j6x")
+
+[node name="StripedfloorEdge" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-780.75, 500.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_jprn4")
+
+[node name="StripedfloorEdge2" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-933.5, 563.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_jprn4")
+
+[node name="StripedfloorEdge3" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-184.25, 437)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_jprn4")
+
+[node name="ConcreteEdgeSide" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(610, 324)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_jo0jv")
+
+[node name="ConcreteEdgeSide6" type="Sprite2D" parent="Master World/Level"]
+z_index = 8
+position = Vector2(2663.75, 186.5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_jo0jv")
+
+[node name="ConcreteEdgeSide3" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(-247, 324)
+rotation = 3.14159
+scale = Vector2(0.25, -0.25)
+texture = ExtResource("10_jo0jv")
+
+[node name="ConcreteEdgeSide4" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(1497.25, 326.25)
+rotation = 3.14159
+scale = Vector2(0.25, -0.25)
+texture = ExtResource("10_jo0jv")
+
+[node name="ConcreteEdgeSide5" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(1830, 186.5)
+rotation = 3.14159
+scale = Vector2(0.25, -0.25)
+texture = ExtResource("10_jo0jv")
+
+[node name="ConcreteEdgeSide2" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(932.75, 468)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_jo0jv")
+
+[node name="ConcreteEdgeSide7" type="Sprite2D" parent="Master World/Level"]
+position = Vector2(630.5, 468)
+rotation = 3.14159
+scale = Vector2(0.25, -0.25)
+texture = ExtResource("10_jo0jv")
+
 [node name="Player" parent="." instance=ExtResource("5_rv1yg")]
 z_index = -11
 z_as_relative = false
@@ -782,201 +1030,13 @@ gravity_scale = 5.0
 move_speed = 900.0
 jump_strength = 2200.0
 
-[node name="ConcreteEdge" type="Sprite2D" parent="."]
-position = Vector2(7502, 746)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
+[node name="Sprite2D" parent="." instance=ExtResource("11_5e8f0")]
+z_index = -70
+position = Vector2(-1917, 1254)
+scale = Vector2(1.21875, 1.21875)
 
-[node name="ConcreteEdge5" type="Sprite2D" parent="."]
-position = Vector2(6682, 1305)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge10" type="Sprite2D" parent="."]
-position = Vector2(6170, 1305)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge11" type="Sprite2D" parent="."]
-position = Vector2(4838, 1872)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge14" type="Sprite2D" parent="."]
-position = Vector2(3546, 1872)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge15" type="Sprite2D" parent="."]
-position = Vector2(3034, 1872)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge16" type="Sprite2D" parent="."]
-position = Vector2(2256, 1296)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge17" type="Sprite2D" parent="."]
-position = Vector2(1744, 1296)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge18" type="Sprite2D" parent="."]
-position = Vector2(1232, 1296)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge19" type="Sprite2D" parent="."]
-position = Vector2(720, 1296)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge20" type="Sprite2D" parent="."]
-position = Vector2(208, 1296)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge21" type="Sprite2D" parent="."]
-position = Vector2(-304, 1296)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge22" type="Sprite2D" parent="."]
-position = Vector2(-805, 1296)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge12" type="Sprite2D" parent="."]
-position = Vector2(5350, 1872)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge13" type="Sprite2D" parent="."]
-position = Vector2(5680, 1872)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge9" type="Sprite2D" parent="."]
-position = Vector2(7011, 1305)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge2" type="Sprite2D" parent="."]
-position = Vector2(8014, 746)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge3" type="Sprite2D" parent="."]
-position = Vector2(8526, 746)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge4" type="Sprite2D" parent="."]
-position = Vector2(9038, 746)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge6" type="Sprite2D" parent="."]
-position = Vector2(9997, 746)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge8" type="Sprite2D" parent="."]
-position = Vector2(9489, 746)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="ConcreteEdge7" type="Sprite2D" parent="."]
-position = Vector2(10326, 746)
-scale = Vector2(2, 2)
-texture = ExtResource("5_h33ji")
-
-[node name="Stripedfloor" type="Sprite2D" parent="."]
-position = Vector2(-1749, 1748)
-scale = Vector2(2, 2)
-texture = ExtResource("3_co8rd")
-
-[node name="Stripedfloor2" type="Sprite2D" parent="."]
-position = Vector2(-2258, 1748)
-scale = Vector2(2, 2)
-texture = ExtResource("3_co8rd")
-
-[node name="Stripedfloorjoint" type="Sprite2D" parent="."]
-position = Vector2(-2666, 1748)
-scale = Vector2(2, 2)
-texture = ExtResource("7_irxju")
-
-[node name="Stripedfloorjoint2" type="Sprite2D" parent="."]
-position = Vector2(-3447, 2002)
-scale = Vector2(2, 2)
-texture = ExtResource("7_irxju")
-
-[node name="Stripedfloorjoint3" type="Sprite2D" parent="."]
-position = Vector2(-5270, 2255)
-scale = Vector2(2, 2)
-texture = ExtResource("7_irxju")
-
-[node name="Stripedfloorjoint4" type="Sprite2D" parent="."]
-position = Vector2(-5782, 2255)
-scale = Vector2(2, 2)
-texture = ExtResource("7_irxju")
-
-[node name="Stripedfloorjoint5" type="Sprite2D" parent="."]
-position = Vector2(-6294, 2255)
-scale = Vector2(2, 2)
-texture = ExtResource("7_irxju")
-
-[node name="Stripedfloor3" type="Sprite2D" parent="."]
-position = Vector2(-4246, 2255)
-scale = Vector2(2, 2)
-texture = ExtResource("3_co8rd")
-
-[node name="Stripedfloor4" type="Sprite2D" parent="."]
-position = Vector2(-4758, 2255)
-scale = Vector2(2, 2)
-texture = ExtResource("3_co8rd")
-
-[node name="Stripedfloor5" type="Sprite2D" parent="."]
-position = Vector2(-6805, 2255)
-scale = Vector2(2, 2)
-texture = ExtResource("3_co8rd")
-
-[node name="Stripedfloor6" type="Sprite2D" parent="."]
-position = Vector2(-7317, 2255)
-scale = Vector2(2, 2)
-texture = ExtResource("3_co8rd")
-
-[node name="Stripedfloor7" type="Sprite2D" parent="."]
-position = Vector2(-7824, 2255)
-scale = Vector2(2, 2)
-texture = ExtResource("3_co8rd")
-
-[node name="StripedfloorEdgeL" type="Sprite2D" parent="."]
-position = Vector2(-3844, 2002)
-scale = Vector2(2, 2)
-texture = ExtResource("8_y0j6x")
-
-[node name="StripedfloorEdgeL2" type="Sprite2D" parent="."]
-position = Vector2(-3064, 1748)
-scale = Vector2(2, 2)
-texture = ExtResource("8_y0j6x")
-
-[node name="StripedfloorEdge" type="Sprite2D" parent="."]
-position = Vector2(-3123, 2002)
-scale = Vector2(2, 2)
-texture = ExtResource("7_jprn4")
-
-[node name="StripedfloorEdge2" type="Sprite2D" parent="."]
-position = Vector2(-3734, 2255)
-scale = Vector2(2, 2)
-texture = ExtResource("7_jprn4")
-
-[node name="StripedfloorEdge3" type="Sprite2D" parent="."]
-position = Vector2(-1255, 1748)
-scale = Vector2(2, 2)
-texture = ExtResource("7_jprn4")
-
-[node name="ConcreteEdgeSide" type="Sprite2D" parent="."]
-position = Vector2(2440, 1296)
-texture = ExtResource("10_jo0jv")
+[node name="ChineseStore" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(-2540.13, 1295)
+scale = Vector2(1.3208, 1.3208)
+texture = ExtResource("12_q6b75")

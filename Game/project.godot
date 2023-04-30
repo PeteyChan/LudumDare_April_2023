@@ -22,3 +22,7 @@ Bootstrap="*res://_Core/Bootstrap.cs"
 [dotnet]
 
 project/assembly_name="Game"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.0392157, 0.0588235, 0.0784314, 1)
