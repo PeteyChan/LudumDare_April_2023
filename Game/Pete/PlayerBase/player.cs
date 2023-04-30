@@ -510,7 +510,12 @@ public partial class player : RigidBody2D, Interactable
 
                     Vector2 label_position = Position + new Vector2(0, -240);
 
-                    if (Inventory != null) OneOffLabel.Spawn(label_position, "Inventory is full");
+                    if (Inventory != null)
+                    {
+                        OneOffLabel.Spawn(label_position, "Inventory is full");
+                        return;
+                    }
+
                     else if (Physics.TryOverlapCircle2D(Position, 100, results_buffer, exclude: exclude_buffer, debug: Game.Show_Debug_Gizmos))
                     {
                         foreach (var node in results_buffer)
@@ -530,6 +535,7 @@ public partial class player : RigidBody2D, Interactable
                                 }
                             }
                     }
+                    
                     OneOffLabel.Spawn(label_position, "Nothing Here");
                 }
 
