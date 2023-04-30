@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpvbm2xh1f3dk"
-path="res://.godot/imported/Cybergirl-01.png-bd1640865d09aa04ec5e56ccaf1f1e9b.ctex"
+uid="uid://diwt1opb1qwv8"
+path="res://.godot/imported/Cybergirl_Pieces.png-997e7fa1ee05308cafb10eb06d341320.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Nick Art/Cybergirl-01.png"
-dest_files=["res://.godot/imported/Cybergirl-01.png-bd1640865d09aa04ec5e56ccaf1f1e9b.ctex"]
+source_file="res://Nick Art/Cybergirl_Pieces.png"
+dest_files=["res://.godot/imported/Cybergirl_Pieces.png-997e7fa1ee05308cafb10eb06d341320.ctex"]
 
 [params]
 
