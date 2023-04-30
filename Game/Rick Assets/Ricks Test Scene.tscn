@@ -1,17 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://byt724vpwg6u2"]
+[gd_scene load_steps=16 format=3 uid="uid://byt724vpwg6u2"]
 
 [ext_resource type="PackedScene" uid="uid://cdnlr4rlweagm" path="res://Rick Assets/StreetLamp01.tscn" id="2_rueyj"]
 [ext_resource type="PackedScene" uid="uid://b5cogeuwci3g3" path="res://Rick Assets/Prefabs/Bridge01.tscn" id="3_baena"]
 [ext_resource type="Texture2D" uid="uid://bf6enqm7ry0j3" path="res://Rick Assets/Floor/Striped/stripedfloor.png" id="3_co8rd"]
 [ext_resource type="PackedScene" uid="uid://bknkqkth10dww" path="res://Rick Assets/Prefabs/TestGround.tscn" id="4_n8a8d"]
 [ext_resource type="Texture2D" uid="uid://ci6lt6dctli6r" path="res://Rick Assets/Floor/ConcreteEdge/ConcreteEdge.png" id="5_h33ji"]
-[ext_resource type="PackedScene" uid="uid://b36dhs6q8cfii" path="res://Pete/PlayerBase/player.tscn" id="5_rv1yg"]
 [ext_resource type="Texture2D" uid="uid://c3bwodwquo15j" path="res://Rick Assets/Floor/Striped/stripedfloorjoint.png" id="7_irxju"]
 [ext_resource type="Texture2D" uid="uid://sngiwsok8ocm" path="res://Rick Assets/Floor/Striped/stripedfloorEdge.png" id="7_jprn4"]
 [ext_resource type="Texture2D" uid="uid://rk6h2v7tahny" path="res://Rick Assets/Floor/Striped/stripedfloorEdgeL.png" id="8_y0j6x"]
 [ext_resource type="Texture2D" uid="uid://bd6nxy4ghy4m5" path="res://Rick Assets/Floor/ConcreteEdge/ConcreteEdgeSide.png" id="10_jo0jv"]
 [ext_resource type="PackedScene" path="res://Rick Assets/Prefabs/PopUpShop.tscn" id="11_5e8f0"]
+[ext_resource type="PackedScene" uid="uid://byls1e7obrc8u" path="res://Assets/Actors/cyberpunk_dude.tscn" id="12_80q0b"]
 [ext_resource type="Texture2D" uid="uid://xyuctgdb1vyk" path="res://Rick Assets/Environment/ChineseStore.png" id="12_q6b75"]
+[ext_resource type="PackedScene" uid="uid://bqhylm6788twm" path="res://Assets/collection_point.tscn" id="13_ii1uh"]
+[ext_resource type="PackedScene" uid="uid://cobnqll8l18oy" path="res://Assets/Actors/cyberpunk_girl.tscn" id="14_vhnx8"]
+[ext_resource type="PackedScene" uid="uid://0xhm4uukky8c" path="res://Assets/enemy_only_collider.tscn" id="15_thk2v"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -1021,14 +1024,6 @@ rotation = 3.14159
 scale = Vector2(0.25, -0.25)
 texture = ExtResource("10_jo0jv")
 
-[node name="Player" parent="." instance=ExtResource("5_rv1yg")]
-z_index = -11
-z_as_relative = false
-position = Vector2(1125, 1030)
-mass = 10.0
-gravity_scale = 5.0
-is_player = true
-
 [node name="Sprite2D" parent="." instance=ExtResource("11_5e8f0")]
 z_index = -70
 position = Vector2(-1917, 1254)
@@ -1039,3 +1034,46 @@ z_index = -100
 position = Vector2(-2540.13, 1295)
 scale = Vector2(1.3208, 1.3208)
 texture = ExtResource("12_q6b75")
+
+[node name="Cyberpunk_dude" parent="." instance=ExtResource("12_80q0b")]
+position = Vector2(1130, 1027)
+is_player = true
+
+[node name="Collection_Point" parent="." instance=ExtResource("13_ii1uh")]
+position = Vector2(1148, 1006)
+
+[node name="Victims" type="Node" parent="."]
+
+[node name="Cyberpunk_dude2" parent="Victims" instance=ExtResource("12_80q0b")]
+position = Vector2(-393, -1186)
+
+[node name="Cyberpunk_dude3" parent="Victims" instance=ExtResource("12_80q0b")]
+position = Vector2(4962, 496)
+
+[node name="Cyberpunk_dude4" parent="Victims" instance=ExtResource("12_80q0b")]
+position = Vector2(4903, -2462)
+
+[node name="Cyberpunk_dude5" parent="Victims" instance=ExtResource("12_80q0b")]
+position = Vector2(9734, -2869)
+
+[node name="Cyberpunk_Girl" parent="Victims" instance=ExtResource("14_vhnx8")]
+position = Vector2(-3754, -803)
+move_speed = 500.0
+
+[node name="Cyberpunk_Girl2" parent="Victims" instance=ExtResource("14_vhnx8")]
+position = Vector2(-6272, 1867)
+move_speed = 500.0
+
+[node name="Cyberpunk_Girl3" parent="Victims" instance=ExtResource("14_vhnx8")]
+position = Vector2(-5399, 1867)
+move_speed = 500.0
+
+[node name="Cyberpunk_Girl4" parent="Victims" instance=ExtResource("14_vhnx8")]
+position = Vector2(7935, 267)
+move_speed = 500.0
+
+[node name="Enemy_Only_Collider" parent="Victims" instance=ExtResource("15_thk2v")]
+position = Vector2(10724, -2791)
+
+[node name="Enemy_Only_Collider2" parent="Victims" instance=ExtResource("15_thk2v")]
+position = Vector2(8165, -2791)
