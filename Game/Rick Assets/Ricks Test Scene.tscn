@@ -1029,6 +1029,7 @@ mass = 10.0
 gravity_scale = 5.0
 move_speed = 900.0
 jump_strength = 2200.0
+is_player = true
 
 [node name="Sprite2D" parent="." instance=ExtResource("11_5e8f0")]
 z_index = -70

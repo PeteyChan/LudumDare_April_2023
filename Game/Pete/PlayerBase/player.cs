@@ -2,10 +2,8 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class player : RigidBody2D
+public partial class player : RigidBody2D, Interactable
 {
-    public static player PlayerControlled;
-
     public enum PlayerStates
     {
         Idle,
@@ -14,22 +12,38 @@ public partial class player : RigidBody2D
         Jump,
         Wall_Jump,
         Landing,
+        Attack,
+        Damaged,
+        KnockedOut,
+        Dead
     }
 
     [Export] public float move_speed = 200f, jump_strength = 500f, grounded_offset = -20f;
 
+    [Export] public bool is_player;
+
     Statemachine<PlayerStates> state_machine = new Statemachine<PlayerStates>();
 
-    AnimationPlayer animator;
     List<Godot.Node> node_buffer = new List<Node>();
-    Node2D armature;
+    [Export] Node2D armature;
+    [Export] AnimationPlayer animator;
 
-    public override void _Ready()
+    HashSet<object> attackers = new HashSet<object>();
+
+    public void OnEvent(object event_type)
     {
-        if (!this.TryFind(out animator))
-            throw new Debug.Exception(Name, "failed to find animator");
+        switch (event_type)
+        {
+            case Events.OnAttack on_attacked:
+                if (attackers.Contains(on_attacked.Attacker)) return;
+                attackers.Add(on_attacked.Attacker);
+                LinearVelocity = on_attacked.force;
+                break;
+        }
+    }
 
-        armature = this.FindChild("Armature") as Node2D;
+    public override void _EnterTree()
+    {
         grounded_query_params = new PhysicsShapeQueryParameters2D
         {
             Shape = new CircleShape2D { Radius = 25 },
@@ -37,20 +51,10 @@ public partial class player : RigidBody2D
             Exclude = new Godot.Collections.Array<Rid> { this.GetRid() },
         };
 
-        if (!PlayerControlled.IsValid())
-        {
-            PlayerControlled = this;
-        }
-
-        if (PlayerControlled == this)
+        if (is_player)
         {
             var camera = GD.Load<PackedScene>("res://Pete/PlayerBase/player_camera.tscn").Instantiate() as Camera2D;
             AddChild(camera);
-            camera.OnUpdate(() =>
-            {
-                if (PlayerControlled != this)
-                    camera.DestroyNode();
-            });
         }
     }
 
@@ -61,6 +65,7 @@ public partial class player : RigidBody2D
         LimitVelocity();
         UpdateGrounded();
         ProcessInput();
+        Cleanup();
         UpdateStatemachine((float)delta);
 
         if (Game.Show_Debug_Gizmos)
@@ -70,6 +75,8 @@ public partial class player : RigidBody2D
             Debug.Label("velocity", LinearVelocity.ToString("0"));
             Debug.Label("position", Position.ToString("0"));
             Debug.Label("facing left", is_facing_left);
+            Debug.Label("attackers", attackers.Count);
+            Debug.Label();
         }
 
         void UpdateGrounded()
@@ -95,7 +102,7 @@ public partial class player : RigidBody2D
 
         void ProcessInput()
         {
-            if (PlayerControlled == this)
+            if (is_player)
             {
                 input_move = Game.move_right.CurrentValue() - Game.move_left.CurrentValue();
                 input_jump = Game.jump.Pressed();
@@ -108,6 +115,23 @@ public partial class player : RigidBody2D
 
             input_move = input_move.Clamp(-1, 1);
         }
+
+        void Cleanup()
+        {
+            if (!state_machine.exiting_state) return;
+
+            switch (state_machine.current)
+            {
+                case PlayerStates.Damaged:
+                    attackers.Clear();
+                    armature.Modulate = Colors.White;
+                    break;
+
+                case PlayerStates.KnockedOut:
+                    hits = 0;
+                    goto case PlayerStates.Damaged;
+            }
+        }
     }
 
     PhysicsShapeQueryParameters2D grounded_query_params;
@@ -117,6 +141,8 @@ public partial class player : RigidBody2D
     bool is_grounded, has_wall_jumped;
     bool is_facing_left => armature.Scale.X > 0;
     Vector2 ground_normal;
+
+    int hits;
 
     void UpdateStatemachine(float delta)
     {
@@ -131,8 +157,11 @@ public partial class player : RigidBody2D
                 LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 7f);
 
                 if (input_move.Abs() > .3f) state_machine.next = PlayerStates.Run;
+                if (input_attack) state_machine.next = PlayerStates.Attack;
                 if (!is_grounded) state_machine.next = PlayerStates.Falling;
                 if (input_jump) state_machine.next = PlayerStates.Jump;
+
+                if (attackers.Count > 0) state_machine.next = PlayerStates.Damaged;
                 break;
 
             case PlayerStates.Run:
@@ -140,7 +169,7 @@ public partial class player : RigidBody2D
                 {
                     if (input_move != 0)
                     {
-                        animator.Play("Run", .2f, customSpeed: 2f);
+                        animator.Play("Run", .2f, customSpeed: 1.5f);
                         UpdateFacing(input_move < 0);
                     }
                 }
@@ -150,9 +179,11 @@ public partial class player : RigidBody2D
                 LinearVelocity = LinearVelocity.Lerp(target_speed, delta * 7f);
 
                 if (input_move.Abs() < .3f) state_machine.next = PlayerStates.Idle;
+                if (input_attack) state_machine.next = PlayerStates.Attack;
                 if (!is_grounded) state_machine.next = PlayerStates.Falling;
                 if (input_jump) state_machine.next = PlayerStates.Jump;
 
+                if (attackers.Count > 0) state_machine.next = PlayerStates.Damaged;
                 break;
 
             case PlayerStates.Falling:
@@ -225,6 +256,75 @@ public partial class player : RigidBody2D
                     state_machine.next = PlayerStates.Falling;
                 break;
 
+
+            case PlayerStates.Damaged:
+                if (state_machine.entered_state)
+                {
+                    hits++;
+                    animator.Play("Damaged");
+                    animator.Seek(0, true);
+                }
+
+                LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 10f);
+
+                if (state_machine.state_time > .25f)
+                    state_machine.next = PlayerStates.Idle;
+
+                if (!is_grounded)
+                    state_machine.next = PlayerStates.Falling;
+
+                if (hits > 3)
+                    state_machine.next = PlayerStates.KnockedOut;
+
+                armature.Modulate = Colors.Red.Lerp(Colors.White, state_machine.state_time * 4f);
+                break;
+
+            case PlayerStates.Attack:
+                if (state_machine.entered_state)
+                {
+                    animator.Play("Attack", customSpeed: 2f);
+                }
+                LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 10f);
+
+                if (!is_grounded)
+                    state_machine.next = PlayerStates.Falling;
+                if (state_machine.state_time > .25f)
+                    if (input_move == 0) state_machine.next = PlayerStates.Idle;
+                    else state_machine.next = PlayerStates.Run;
+
+                var foot = armature.FindChild("Foot_Left") as Node2D;
+                grounded_query_params.Transform = foot.GlobalTransform;
+
+                if (Physics.TryOverlapShape2D(grounded_query_params, node_buffer, debug: Game.Show_Debug_Gizmos))
+                {
+                    foreach (var node in node_buffer)
+                        if (node.TryFindParent(out Interactable interactable))
+                        {
+                            interactable.OnEvent(new Events.OnAttack
+                            {
+                                Attacker = this,
+                                force = new Vector2(move_speed * (is_facing_left ? -1 : 1), 0),
+                            });
+                        }
+                }
+                break;
+
+            case PlayerStates.KnockedOut:
+                if (state_machine.entered_state)
+                {
+                    animator.Play("KnockDown");
+                }
+
+                float knockout_time = 5f;
+
+                armature.Modulate = Colors.Red.Lerp(Colors.White, state_machine.state_time / knockout_time);
+
+                LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 10f);
+                
+                if (!is_grounded || state_machine.state_time > knockout_time)
+                    state_machine.next = PlayerStates.Idle;
+                break;
+
             default:
                 state_machine.next = PlayerStates.Idle;
                 break;
@@ -262,10 +362,12 @@ class Statemachine<T> where T : struct, Enum
     public T? current { get; private set; }
     public T? next;
     public float state_time { get; private set; }
+    public float total_time { get; private set; }
     public bool entered_state => state_time == 0;
     public bool exiting_state => next != null;
     public T? Update(float delta)
     {
+        total_time += delta;
         if (next != null)
         {
             previous = current;

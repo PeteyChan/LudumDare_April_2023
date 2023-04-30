@@ -2,7 +2,7 @@ public static class Game
 {
     public static bool Show_Debug_Gizmos = false;
     public static Inputs move_left = Inputs.key_a, move_right = Inputs.key_d, jump = Inputs.key_space, attack = Inputs.mouse_left_click;
-    
+
     static void GameSettings(Debug.Console args)
     {
         ImmediateWindow window = new ImmediateWindow();
@@ -18,5 +18,20 @@ public static class Game
                     field.SetValue(null, output);
             }
         });
+    }
+}
+
+
+public interface Interactable
+{
+    void OnEvent(object event_type) { }
+}
+
+namespace Events
+{
+    public class OnAttack
+    {
+        public object Attacker;
+        public Godot.Vector2 force;
     }
 }
