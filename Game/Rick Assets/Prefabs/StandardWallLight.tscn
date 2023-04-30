@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://j12qrvlrp30m"]
+
+[ext_resource type="Texture2D" uid="uid://ce8hl8nxs62d8" path="res://Rick Assets/Floor/Stairs/WallLight.png" id="1_lgc82"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_lgc82")

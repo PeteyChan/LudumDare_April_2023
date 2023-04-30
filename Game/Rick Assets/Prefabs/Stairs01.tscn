@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dklcwoonu223a"]
+
+[ext_resource type="Texture2D" uid="uid://clwftnggwkllv" path="res://Rick Assets/Floor/Stairs/Stairs01.png" id="1_n5g4b"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(-256, 249)
+texture = ExtResource("1_n5g4b")
