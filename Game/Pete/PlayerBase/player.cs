@@ -8,7 +8,7 @@ public partial class player : RigidBody2D
     public enum PlayerStates
     {
         Idle,
-        Walk,
+        Run,
         Falling,
         Jump
     }
@@ -18,21 +18,17 @@ public partial class player : RigidBody2D
 
     Statemachine<PlayerStates> state_machine = new Statemachine<PlayerStates>();
 
-    AnimationPlayer aniamtor_torso, animator_legs;
+    AnimationPlayer animator;
     List<Godot.Node> node_buffer = new List<Node>();
+
+    Node2D armature;
 
     public override void _Ready()
     {
-        foreach (var animator in this.FindAll<AnimationPlayer>())
-        {
-            if (animator.Name.ToString().Contains("Torso"))
-                aniamtor_torso = animator;
-            if (animator.Name.ToString().Contains("Hips"))
-                animator_legs = animator;
-        }
+        if (!this.TryFind(out animator))
+            throw new Debug.Exception(Name, "failed to find animator");
 
-        Debug.Assert(() => animator_legs.IsValid() && aniamtor_torso.IsValid(), Name, ": Animators were not set up properly");
-
+        armature = this.FindChild("Armature") as Node2D;
         grounded_query_params = new PhysicsShapeQueryParameters2D
         {
             Shape = new CircleShape2D { Radius = 25 },
@@ -70,8 +66,8 @@ public partial class player : RigidBody2D
     PhysicsShapeQueryParameters2D grounded_query_params;
 
     float move_direction;
-
     bool grounded;
+
 
 
     void UpdateStatemachine(float delta)
@@ -81,22 +77,22 @@ public partial class player : RigidBody2D
             case PlayerStates.Idle:
                 if (state_machine.entered_state)
                 {
-                    aniamtor_torso.Play("Idle");
-                    animator_legs.Play("Idle");
+                    animator.Play("Idle");
                 }
 
                 LinearVelocity = Vector2.Zero;
 
-                if (move_direction.Abs() > .3f) state_machine.next = PlayerStates.Walk;
+                if (move_direction.Abs() > .3f) state_machine.next = PlayerStates.Run;
                 if (!grounded) state_machine.next = PlayerStates.Falling;
                 if (jump.OnPressed()) state_machine.next = PlayerStates.Jump;
                 break;
 
-            case PlayerStates.Walk:
+            case PlayerStates.Run:
                 if (state_machine.entered_state)
                 {
-                    aniamtor_torso.Play("Walk");
-                    animator_legs.Play("Walk");
+                    animator.Play("Run", customSpeed: 2f);
+
+                    UpdateFacing(move_direction < 0);
                 }
 
                 LinearVelocity = new Vector2(move_direction * move_speed, -20f);
@@ -110,8 +106,7 @@ public partial class player : RigidBody2D
             case PlayerStates.Falling:
                 if (state_machine.entered_state)
                 {
-                    aniamtor_torso.Play("Fall");
-                    aniamtor_torso.Play("Fall");
+                    animator.Play("Fall");
                 }
 
                 if (CanWallJump())
@@ -119,6 +114,8 @@ public partial class player : RigidBody2D
                     var sign = LinearVelocity.X < 0 ? 1 : -1;
                     LinearVelocity = new Vector2(move_speed * sign, -jump_strength);
                     state_machine.next = PlayerStates.Jump;
+
+                    UpdateFacing(LinearVelocity.X < 0);
                 }
 
                 if (grounded) state_machine.next = PlayerStates.Idle;
@@ -127,8 +124,7 @@ public partial class player : RigidBody2D
             case PlayerStates.Jump:
                 if (state_machine.entered_state)
                 {
-                    aniamtor_torso.Play("Fall");
-                    aniamtor_torso.Play("Fall");
+                    animator.Play("Fall");
                     LinearVelocity = new Vector2(LinearVelocity.X, -jump_strength);
                 }
 
@@ -149,11 +145,20 @@ public partial class player : RigidBody2D
 
             Vector2 wall_jump_offset = new Vector2(30, -40);
             wall_jump_offset.X *= LinearVelocity.X < 0 ? -1f : 1;
-
             var transform = Transform2D.Identity;
             transform.Origin = Position + wall_jump_offset;
             grounded_query_params.Transform = transform;
             return (Physics.TryOverlapShape2D(grounded_query_params, node_buffer, debug: Game.Show_Debug_Gizmos));
+        }
+
+        void UpdateFacing(bool face_left)
+        {
+            var scale = armature.Scale;
+            if (face_left && armature.Scale.X < 0)
+                scale.X = -scale.X;
+            if (!face_left && armature.Scale.X > 0)
+                scale.X = -scale.X;
+            armature.Scale = scale;
         }
     }
 }
