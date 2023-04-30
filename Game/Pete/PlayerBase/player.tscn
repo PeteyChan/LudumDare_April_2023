@@ -3208,13 +3208,12 @@ region = Rect2(394.034, 545.124, 98.2412, 201.314)
 atlas = ExtResource("2_qjj7l")
 region = Rect2(408.29, 772.72, 73.81, 127.05)
 
-[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("armature", "animator")]
+[node name="Player" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_ph2xn")
+gravity_scale = 5.0
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_ot50c")
-armature = NodePath("Armature")
-animator = NodePath("Animator")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -104)
