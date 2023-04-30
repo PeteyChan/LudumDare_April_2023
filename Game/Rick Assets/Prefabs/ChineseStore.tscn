@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://8v3x3xdauuuh"]
+
+[ext_resource type="Texture2D" uid="uid://xyuctgdb1vyk" path="res://Rick Assets/Environment/ChineseStore.png" id="1_hfxmf"]
+[ext_resource type="Texture2D" uid="uid://b7kclqbumw1yp" path="res://Rick Assets/Street Lamps/BlueRadialGlow.png" id="2_16uff"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(0, -149)
+texture = ExtResource("1_hfxmf")
+
+[node name="BlueRadialGlow2" type="Sprite2D" parent="."]
+modulate = Color(1, 0.466667, 0.596078, 1)
+self_modulate = Color(1, 0.556863, 0.545098, 0.372549)
+position = Vector2(62, -102)
+scale = Vector2(1.00856, 0.991738)
+texture = ExtResource("2_16uff")
+
+[node name="BlueRadialGlow4" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.137255)
+position = Vector2(-154, -82)
+scale = Vector2(0.912156, 0.896939)
+texture = ExtResource("2_16uff")
+
+[node name="BlueRadialGlow3" type="Sprite2D" parent="."]
+modulate = Color(1, 0.466667, 0.596078, 1)
+self_modulate = Color(1, 0.556863, 0.545098, 0.372549)
+position = Vector2(219, 1)
+scale = Vector2(0.325098, 0.41666)
+texture = ExtResource("2_16uff")

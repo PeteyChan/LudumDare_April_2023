@@ -14,4 +14,10 @@ public class Commands
 		Scene.Load("res://Scenes/Title/Title.tscn");
 	}
 
+	static void SpawnPlayer(Debug.Console args)
+	{
+		var player = GD.Load<PackedScene>("res://Pete/PlayerBase/player.tscn").Instantiate();
+		Scene.Current.AddChild(player);
+	}
+
 }
