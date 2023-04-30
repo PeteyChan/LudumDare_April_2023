@@ -49,6 +49,7 @@ public partial class player : RigidBody2D, Interactable
 
     (float move, bool jump, bool attack) input = default;
     List<Godot.Node> results_buffer = new List<Node>();
+    List<Godot.Node> exclude_buffer;
     Node2D armature;
     AnimationPlayer animator;
     public void OnEvent(object event_type)
@@ -74,6 +75,8 @@ public partial class player : RigidBody2D, Interactable
 
         if (!this.TryFind(out animator)) throw new Debug.Exception(Name, "failed to setup animator");
         armature = FindChild("Armature") as Node2D;
+
+        exclude_buffer = new List<Node> { this };
 
         if (is_player)
         {
@@ -133,24 +136,66 @@ public partial class player : RigidBody2D, Interactable
             {
                 switch (ai.Update(delta))
                 {
-                    case AIStates.Idle:                        
+                    case AIStates.Idle:
                         input = default;
                         if (ai.entered_state)
-                            ai_data.target_time = Random.Shared.Range(2, 3);
-                        
+                            ai_data.target_time = Random.Shared.Range(1, 2);
+
                         if (ai.state_time > ai_data.target_time)
                             ai.next = AIStates.Wander;
                         break;
 
                     case AIStates.Wander:
-                        if (ai.entered_state)
                         {
-                            ai_data.target_time = Random.Shared.Range(1f, 2f);
-                            input.move = Random.Shared.NextSingle() > .5f ? -1 : 1;
+                            input.attack = default;
+                            if (ai.entered_state)
+                            {
+                                ai_data.target_time = Random.Shared.Range(1f, 2f);
+                                input.move = Random.Shared.NextSingle() > .5f ? -1 : 1;
+                            }
+                            if (ai.state_time > ai_data.target_time)
+                                ai.next = AIStates.Idle;
+
+
+                            if (ai.update_count % 10 == 0 && Physics.TryOverlapCircle2D(
+                                GlobalPosition + new Vector2(face_left_value * -40, -80),
+                                30, results_buffer,
+                                exclude: exclude_buffer, // this doesn't seem to be doing anything
+                                debug: Game.Show_Debug_Gizmos)
+                            )
+                            {
+                                int collisions = 0;
+                                foreach (var item in results_buffer)
+                                {
+                                    if (item.TryFind(out player player))
+                                    {
+                                        if (player.is_player)
+                                        {
+                                            input.attack = true;
+                                            return;
+                                        }
+                                        continue;
+                                    }
+                                    collisions++;
+                                }
+                                if (collisions > 0)
+                                {
+                                    input.move = -input.move;
+                                }
+                            }
+
+                            if (!Physics.TryOverlapCircle2D(
+                                GlobalPosition + new Vector2(face_left_value * -80, 20),
+                                30, results_buffer,
+                                exclude: exclude_buffer, // this doesn't seem to be doing anything
+                                debug: Game.Show_Debug_Gizmos)
+                            )
+                            {
+                                input.move = -input.move;
+                            }
+
+                            break;
                         }
-                        if (ai.state_time > ai_data.target_time)
-                            ai.next = AIStates.Idle;
-                        break;
 
                     default:
                         ai.next = AIStates.Idle;
@@ -183,6 +228,9 @@ public partial class player : RigidBody2D, Interactable
     PhysicsShapeQueryParameters2D grounded_query_params;
     bool is_grounded, has_wall_jumped;
     bool is_facing_left => armature.Scale.X > 0;
+
+    float face_left_value => is_facing_left ? 1 : -1;
+
     Vector2 ground_normal;
 
     void UpdateStatemachine(float delta)
@@ -211,7 +259,6 @@ public partial class player : RigidBody2D, Interactable
                     if (input.move != 0)
                     {
                         animator.Play("Run", .2f, customSpeed: 1.5f);
-                        UpdateFacing(input.move < 0);
                     }
                 }
 
@@ -225,6 +272,9 @@ public partial class player : RigidBody2D, Interactable
                 if (input.jump) state.next = PlayerStates.Jump;
 
                 if (state_data.attackers.Count > 0) state.next = PlayerStates.Damaged;
+
+                if (!state.exiting_state)
+                    UpdateFacing(input.move < 0);
                 break;
 
             case PlayerStates.Falling:
@@ -406,9 +456,11 @@ class Statemachine<T> where T : struct, Enum
     public float total_time { get; private set; }
     public bool entered_state => state_time == 0;
     public bool exiting_state => next != null;
+    public int update_count { get; private set; }
     public T? Update(float delta)
     {
         total_time += delta;
+        update_count++;
         if (next != null)
         {
             previous = current;

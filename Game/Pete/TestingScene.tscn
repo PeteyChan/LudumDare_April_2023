@@ -6,23 +6,27 @@
 [node name="Testing" type="Node2D"]
 
 [node name="TestCollider" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(-211, 547)
+position = Vector2(1971, 513)
 scale = Vector2(24.12, 1)
 
 [node name="TestCollider2" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(1253, 293)
+position = Vector2(3435, 259)
 scale = Vector2(1.62822, 1.62822)
 
 [node name="TestCollider3" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(853, 136)
+position = Vector2(3035, 102)
 scale = Vector2(1.62822, 1.62822)
 
 [node name="TestCollider4" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(1249, 78)
+position = Vector2(3431, 44)
 scale = Vector2(1.62822, 1.62822)
 
+[node name="TestCollider8" parent="." instance=ExtResource("2_iv32r")]
+position = Vector2(-1, 341)
+scale = Vector2(5.58822, 1.62822)
+
 [node name="TestCollider5" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(-741, 531)
+position = Vector2(1441, 497)
 rotation = 0.785398
 scale = Vector2(3.42756, 3.42756)
 
