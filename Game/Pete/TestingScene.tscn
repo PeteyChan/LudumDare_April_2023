@@ -1,32 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://darlfucrkb86m"]
+[gd_scene load_steps=4 format=3 uid="uid://darlfucrkb86m"]
 
-[ext_resource type="PackedScene" uid="uid://b36dhs6q8cfii" path="res://Pete/PlayerBase/player.tscn" id="1_mnxmo"]
 [ext_resource type="PackedScene" uid="uid://d0ipw28l6byfl" path="res://Pete/test_collider.tscn" id="2_iv32r"]
+[ext_resource type="PackedScene" uid="uid://bqhylm6788twm" path="res://Assets/collection_point.tscn" id="2_qwd6v"]
+[ext_resource type="PackedScene" uid="uid://byls1e7obrc8u" path="res://Assets/Actors/cyberpunk_dude.tscn" id="3_nhvkq"]
 
 [node name="Testing" type="Node2D"]
 
 [node name="TestCollider" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(-211, 547)
+position = Vector2(1971, 513)
 scale = Vector2(24.12, 1)
 
 [node name="TestCollider2" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(1253, 293)
+position = Vector2(3435, 259)
 scale = Vector2(1.62822, 1.62822)
 
 [node name="TestCollider3" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(853, 136)
+position = Vector2(-485, 115)
 scale = Vector2(1.62822, 1.62822)
 
 [node name="TestCollider4" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(1249, 78)
+position = Vector2(3431, 44)
 scale = Vector2(1.62822, 1.62822)
 
+[node name="TestCollider8" parent="." instance=ExtResource("2_iv32r")]
+position = Vector2(-1, 341)
+scale = Vector2(5.58822, 1.62822)
+
 [node name="TestCollider5" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(-741, 531)
+position = Vector2(1441, 497)
 rotation = 0.785398
 scale = Vector2(3.42756, 3.42756)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("1_mnxmo")]
+[node name="Collection_Point" parent="." instance=ExtResource("2_qwd6v")]
+position = Vector2(2, 217)
+collision_layer = 3
+collision_mask = 3
+monitorable = false
+
+[node name="Cyberpunk_dude" parent="." instance=ExtResource("3_nhvkq")]
+position = Vector2(7, -24)
 is_player = true
+limb_color_left_leg = 2
+limb_color_right_leg = 4

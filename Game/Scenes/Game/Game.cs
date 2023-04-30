@@ -1,7 +1,18 @@
 public static class Game
 {
     public static bool Show_Debug_Gizmos = false;
-    public static Inputs move_left = Inputs.key_a, move_right = Inputs.key_d, jump = Inputs.key_space, attack = Inputs.mouse_left_click;
+    public static 
+        Inputs move_left = Inputs.key_a, 
+        move_right = Inputs.key_d, 
+        jump = Inputs.key_space, 
+        attack = Inputs.mouse_left_click,
+        collect = Inputs.key_e;
+
+    static void Update(Bootstrap.Process args)
+    {
+        if (Inputs.key_f1.OnPressed())
+            Show_Debug_Gizmos = !Show_Debug_Gizmos;
+    }
 
     static void GameSettings(Debug.Console args)
     {

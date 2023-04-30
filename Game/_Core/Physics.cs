@@ -221,6 +221,11 @@ public static class Physics
 
     static PhysicsDirectSpaceState2D space2D = viewport.World2D.DirectSpaceState;
     static CircleShape2D circle = new CircleShape2D();
+    static PhysicsShapeQueryParameters2D shape_query_params_2d = new PhysicsShapeQueryParameters2D
+    {
+        Exclude = new Godot.Collections.Array<Rid>(),
+    };
+
     public static bool TryShapeCast2D(PhysicsShapeQueryParameters2D parameters, out Result2D result, bool debug = false)
     {
         var default_transform = parameters.Transform;
@@ -292,6 +297,26 @@ public static class Physics
             }
         }
         return results.Count > 0;
+    }
+
+    public static bool TryOverlapCircle2D(Vector2 global_position, float radius, List<Node> results, int max_results = 32, uint mask = uint.MaxValue, List<Godot.Node> exclude = default, bool debug = false)
+    {
+        shape_query_params_2d.Exclude.Clear();
+        if (exclude != null)
+            foreach (var node in exclude)
+                if (node is PhysicsBody2D pbody)
+                {
+                    shape_query_params_2d.Exclude.Add(pbody.GetRid());
+                }
+
+        shape_query_params_2d.CollisionMask = mask;
+        Transform2D transform = Transform2D.Identity;
+        transform.Origin = global_position;
+        shape_query_params_2d.Transform = transform;
+
+        circle.Radius = radius;
+        shape_query_params_2d.Shape = circle;
+        return TryOverlapShape2D(shape_query_params_2d, results, max_results, debug);
     }
 
     public static bool TryRayCast2D(PhysicsRayQueryParameters2D parameters, out Result2D result, bool debug = false)
