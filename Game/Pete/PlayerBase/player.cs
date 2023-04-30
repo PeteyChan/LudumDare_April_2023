@@ -4,23 +4,24 @@ using System.Collections.Generic;
 
 public partial class player : RigidBody2D
 {
+    public static player PlayerControlled;
 
     public enum PlayerStates
     {
         Idle,
         Run,
         Falling,
-        Jump
+        Jump,
+        Wall_Jump,
+        Landing,
     }
 
-    [Export] public Inputs move_left = Inputs.key_a, move_right = Inputs.key_d, jump = Inputs.key_space;
     [Export] public float move_speed = 200f, jump_strength = 500f, grounded_offset = -20f;
 
     Statemachine<PlayerStates> state_machine = new Statemachine<PlayerStates>();
 
     AnimationPlayer animator;
     List<Godot.Node> node_buffer = new List<Node>();
-
     Node2D armature;
 
     public override void _Ready()
@@ -35,22 +36,41 @@ public partial class player : RigidBody2D
             CollideWithBodies = true,
             Exclude = new Godot.Collections.Array<Rid> { this.GetRid() },
         };
+
+        if (!PlayerControlled.IsValid())
+        {
+            PlayerControlled = this;
+        }
+
+        if (PlayerControlled == this)
+        {
+            var camera = GD.Load<PackedScene>("res://Pete/PlayerBase/player_camera.tscn").Instantiate() as Camera2D;
+            AddChild(camera);
+            camera.OnUpdate(() =>
+            {
+                if (PlayerControlled != this)
+                    camera.DestroyNode();
+            });
+        }
     }
 
 
 
     public override void _Process(double delta)
     {
+        LimitVelocity();
         UpdateGrounded();
+        ProcessInput();
         UpdateStatemachine((float)delta);
 
-        move_direction = move_right.CurrentValue() - move_left.CurrentValue();
-
-
-        Debug.Label(state_machine.current);
-        Debug.Label("grounded", grounded);
-        Debug.Label("velocity", LinearVelocity);
-        Debug.Label("position", Position);
+        if (Game.Show_Debug_Gizmos)
+        {
+            Debug.Label(state_machine.current);
+            Debug.Label("grounded", is_grounded);
+            Debug.Label("velocity", LinearVelocity.ToString("0"));
+            Debug.Label("position", Position.ToString("0"));
+            Debug.Label("facing left", is_facing_left);
+        }
 
         void UpdateGrounded()
         {
@@ -59,16 +79,44 @@ public partial class player : RigidBody2D
             grounded_query_params.Transform = grounded_transform;
             grounded_query_params.Motion = Vector2.Up * grounded_offset * 2f;
 
-            grounded = Physics.TryShapeCast2D(grounded_query_params, out var result, debug: Game.Show_Debug_Gizmos);
+            is_grounded = Physics.TryShapeCast2D(grounded_query_params, out var result, debug: Game.Show_Debug_Gizmos);
+            ground_normal = result.normal;
+        }
+
+        void LimitVelocity()
+        {
+            var velcoity = LinearVelocity;
+            float max = 2000;
+            velcoity.X = velcoity.X.Clamp(-max, max);
+            velcoity.Y = velcoity.Y.Clamp(-max, max);
+            if (velcoity != LinearVelocity)
+                LinearVelocity = velcoity;
+        }
+
+        void ProcessInput()
+        {
+            if (PlayerControlled == this)
+            {
+                input_move = Game.move_right.CurrentValue() - Game.move_left.CurrentValue();
+                input_jump = Game.jump.Pressed();
+                input_attack = Game.attack.Pressed();
+            }
+            else
+            {
+                // AI
+            }
+
+            input_move = input_move.Clamp(-1, 1);
         }
     }
 
     PhysicsShapeQueryParameters2D grounded_query_params;
 
-    float move_direction;
-    bool grounded;
-
-
+    float input_move;
+    bool input_jump, input_attack;
+    bool is_grounded, has_wall_jumped;
+    bool is_facing_left => armature.Scale.X > 0;
+    Vector2 ground_normal;
 
     void UpdateStatemachine(float delta)
     {
@@ -77,48 +125,53 @@ public partial class player : RigidBody2D
             case PlayerStates.Idle:
                 if (state_machine.entered_state)
                 {
-                    animator.Play("Idle");
+                    animator.Play("Idle", .2f);
                 }
 
-                LinearVelocity = Vector2.Zero;
+                LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 7f);
 
-                if (move_direction.Abs() > .3f) state_machine.next = PlayerStates.Run;
-                if (!grounded) state_machine.next = PlayerStates.Falling;
-                if (jump.OnPressed()) state_machine.next = PlayerStates.Jump;
+                if (input_move.Abs() > .3f) state_machine.next = PlayerStates.Run;
+                if (!is_grounded) state_machine.next = PlayerStates.Falling;
+                if (input_jump) state_machine.next = PlayerStates.Jump;
                 break;
 
             case PlayerStates.Run:
                 if (state_machine.entered_state)
                 {
-                    animator.Play("Run", customSpeed: 2f);
-
-                    UpdateFacing(move_direction < 0);
+                    if (input_move != 0)
+                    {
+                        animator.Play("Run", .2f, customSpeed: 2f);
+                        UpdateFacing(input_move < 0);
+                    }
                 }
 
-                LinearVelocity = new Vector2(move_direction * move_speed, -20f);
+                var target_speed = new Vector2(move_speed * (is_facing_left ? -1 : 1), -20f);
 
-                if (move_direction.Abs() < .3f) state_machine.next = PlayerStates.Idle;
-                if (!grounded) state_machine.next = PlayerStates.Falling;
-                if (jump.OnPressed()) state_machine.next = PlayerStates.Jump;
+                LinearVelocity = LinearVelocity.Lerp(target_speed, delta * 7f);
+
+                if (input_move.Abs() < .3f) state_machine.next = PlayerStates.Idle;
+                if (!is_grounded) state_machine.next = PlayerStates.Falling;
+                if (input_jump) state_machine.next = PlayerStates.Jump;
 
                 break;
 
             case PlayerStates.Falling:
                 if (state_machine.entered_state)
                 {
-                    animator.Play("Fall");
+                    animator.Play("Fall", .2f);
+                }
+
+                if (state_machine.previous == PlayerStates.Run // for a short period of time running off a platform, you can still jump 
+                    && state_machine.state_time < .1f
+                    && input_jump)
+                {
+                    state_machine.next = PlayerStates.Jump;
                 }
 
                 if (CanWallJump())
-                {
-                    var sign = LinearVelocity.X < 0 ? 1 : -1;
-                    LinearVelocity = new Vector2(move_speed * sign, -jump_strength);
-                    state_machine.next = PlayerStates.Jump;
+                    state_machine.next = PlayerStates.Wall_Jump;
 
-                    UpdateFacing(LinearVelocity.X < 0);
-                }
-
-                if (grounded) state_machine.next = PlayerStates.Idle;
+                if (is_grounded) state_machine.next = PlayerStates.Landing;
                 break;
 
             case PlayerStates.Jump:
@@ -132,6 +185,46 @@ public partial class player : RigidBody2D
                     state_machine.next = PlayerStates.Falling;
                 break;
 
+            case PlayerStates.Wall_Jump:
+                if (state_machine.entered_state)
+                {
+                    has_wall_jumped = false;
+                    animator.Play("WallJump", customSpeed: 1.5f);
+                    UpdateFacing(!is_facing_left);
+                    LinearVelocity = Vector2.Zero;
+                }
+
+                if (state_machine.state_time > .2f)
+                    state_machine.next = PlayerStates.Falling;
+
+                if (state_machine.state_time > .1f && !has_wall_jumped)
+                {
+                    LinearVelocity = new Vector2(move_speed * (is_facing_left ? -1 : 1), -jump_strength);
+                    has_wall_jumped = true;
+                }
+
+                if (is_grounded)
+                {
+                    state_machine.next = PlayerStates.Landing;
+                    UpdateFacing(!is_facing_left);
+                }
+                break;
+
+            case PlayerStates.Landing:
+                if (state_machine.entered_state)
+                    animator.Play("Crouching");
+
+                LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 10f);
+
+                if (state_machine.state_time > .1f)
+                    if (input_move == 0)
+                        state_machine.next = PlayerStates.Idle;
+                    else state_machine.next = PlayerStates.Run;
+
+                if (!is_grounded)
+                    state_machine.next = PlayerStates.Falling;
+                break;
+
             default:
                 state_machine.next = PlayerStates.Idle;
                 break;
@@ -139,12 +232,12 @@ public partial class player : RigidBody2D
 
         bool CanWallJump()
         {
-            if (!jump.Pressed()) return false;
-            if (LinearVelocity.X == 0)
+            if (!input_jump) return false;
+            if (LinearVelocity.X.Abs() < 10f)
                 return false;
 
             Vector2 wall_jump_offset = new Vector2(30, -40);
-            wall_jump_offset.X *= LinearVelocity.X < 0 ? -1f : 1;
+            wall_jump_offset.X *= is_facing_left ? -1 : 1;
             var transform = Transform2D.Identity;
             transform.Origin = Position + wall_jump_offset;
             grounded_query_params.Transform = transform;
@@ -165,6 +258,7 @@ public partial class player : RigidBody2D
 
 class Statemachine<T> where T : struct, Enum
 {
+    public T? previous { get; private set; }
     public T? current { get; private set; }
     public T? next;
     public float state_time { get; private set; }
@@ -174,6 +268,7 @@ class Statemachine<T> where T : struct, Enum
     {
         if (next != null)
         {
+            previous = current;
             current = next;
             next = null;
             state_time = 0;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://byt724vpwg6u2"]
+[gd_scene load_steps=11 format=3 uid="uid://byt724vpwg6u2"]
 
 [ext_resource type="PackedScene" uid="uid://cdnlr4rlweagm" path="res://Rick Assets/StreetLamp01.tscn" id="2_rueyj"]
 [ext_resource type="PackedScene" uid="uid://b5cogeuwci3g3" path="res://Rick Assets/Prefabs/Bridge01.tscn" id="3_baena"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c3bwodwquo15j" path="res://Rick Assets/Floor/Striped/stripedfloorjoint.png" id="7_irxju"]
 [ext_resource type="Texture2D" uid="uid://sngiwsok8ocm" path="res://Rick Assets/Floor/Striped/stripedfloorEdge.png" id="7_jprn4"]
 [ext_resource type="Texture2D" uid="uid://rk6h2v7tahny" path="res://Rick Assets/Floor/Striped/stripedfloorEdgeL.png" id="8_y0j6x"]
+[ext_resource type="Texture2D" uid="uid://bd6nxy4ghy4m5" path="res://Rick Assets/Floor/ConcreteEdge/ConcreteEdgeSide.png" id="10_jo0jv"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -975,3 +976,7 @@ texture = ExtResource("7_jprn4")
 position = Vector2(-1255, 1748)
 scale = Vector2(2, 2)
 texture = ExtResource("7_jprn4")
+
+[node name="ConcreteEdgeSide" type="Sprite2D" parent="."]
+position = Vector2(2440, 1296)
+texture = ExtResource("10_jo0jv")
