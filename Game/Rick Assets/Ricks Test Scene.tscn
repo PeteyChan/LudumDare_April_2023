@@ -1042,38 +1042,75 @@ is_player = true
 [node name="Collection_Point" parent="." instance=ExtResource("13_ii1uh")]
 position = Vector2(1148, 1006)
 
-[node name="Victims" type="Node" parent="."]
+[node name="You can delete this, just for testing" type="Node" parent="."]
 
-[node name="Cyberpunk_dude2" parent="Victims" instance=ExtResource("12_80q0b")]
+[node name="Cyberpunk_dude2" parent="You can delete this, just for testing" instance=ExtResource("12_80q0b")]
 position = Vector2(-393, -1186)
 
-[node name="Cyberpunk_dude3" parent="Victims" instance=ExtResource("12_80q0b")]
+[node name="Cyberpunk_dude3" parent="You can delete this, just for testing" instance=ExtResource("12_80q0b")]
 position = Vector2(4962, 496)
 
-[node name="Cyberpunk_dude4" parent="Victims" instance=ExtResource("12_80q0b")]
+[node name="Cyberpunk_dude4" parent="You can delete this, just for testing" instance=ExtResource("12_80q0b")]
 position = Vector2(4903, -2462)
 
-[node name="Cyberpunk_dude5" parent="Victims" instance=ExtResource("12_80q0b")]
+[node name="Cyberpunk_dude5" parent="You can delete this, just for testing" instance=ExtResource("12_80q0b")]
 position = Vector2(9734, -2869)
 
-[node name="Cyberpunk_Girl" parent="Victims" instance=ExtResource("14_vhnx8")]
+[node name="Cyberpunk_dude6" parent="You can delete this, just for testing" instance=ExtResource("12_80q0b")]
+position = Vector2(10024, 215)
+
+[node name="Cyberpunk_Girl" parent="You can delete this, just for testing" instance=ExtResource("14_vhnx8")]
 position = Vector2(-3754, -803)
 move_speed = 500.0
 
-[node name="Cyberpunk_Girl2" parent="Victims" instance=ExtResource("14_vhnx8")]
+[node name="Cyberpunk_Girl2" parent="You can delete this, just for testing" instance=ExtResource("14_vhnx8")]
 position = Vector2(-6272, 1867)
 move_speed = 500.0
 
-[node name="Cyberpunk_Girl3" parent="Victims" instance=ExtResource("14_vhnx8")]
+[node name="Cyberpunk_Girl3" parent="You can delete this, just for testing" instance=ExtResource("14_vhnx8")]
 position = Vector2(-5399, 1867)
 move_speed = 500.0
 
-[node name="Cyberpunk_Girl4" parent="Victims" instance=ExtResource("14_vhnx8")]
+[node name="Cyberpunk_Girl4" parent="You can delete this, just for testing" instance=ExtResource("14_vhnx8")]
 position = Vector2(7935, 267)
 move_speed = 500.0
 
-[node name="Enemy_Only_Collider" parent="Victims" instance=ExtResource("15_thk2v")]
+[node name="Cyberpunk_Girl5" parent="You can delete this, just for testing" instance=ExtResource("14_vhnx8")]
+position = Vector2(-937, -1193)
+move_speed = 500.0
+
+[node name="Enemy_Only_Collider" parent="You can delete this, just for testing" instance=ExtResource("15_thk2v")]
 position = Vector2(10724, -2791)
 
-[node name="Enemy_Only_Collider2" parent="Victims" instance=ExtResource("15_thk2v")]
+[node name="Enemy_Only_Collider2" parent="You can delete this, just for testing" instance=ExtResource("15_thk2v")]
 position = Vector2(8165, -2791)
+
+[node name="Enemy_Only_Collider3" parent="You can delete this, just for testing" instance=ExtResource("15_thk2v")]
+position = Vector2(5620, -2342)
+
+[node name="Enemy_Only_Collider4" parent="You can delete this, just for testing" instance=ExtResource("15_thk2v")]
+position = Vector2(4027, -2334)
+
+[node name="Enemy_Only_Collider6" parent="You can delete this, just for testing" instance=ExtResource("15_thk2v")]
+position = Vector2(7110, 350)
+
+[node name="Enemy_Only_Collider7" parent="You can delete this, just for testing" instance=ExtResource("15_thk2v")]
+position = Vector2(-965, 900)
+
+[node name="Enemy_Only_Collider8" parent="You can delete this, just for testing" instance=ExtResource("15_thk2v")]
+position = Vector2(-1873, -775)
+
+[node name="Enemy_Only_Collider9" parent="You can delete this, just for testing" instance=ExtResource("15_thk2v")]
+position = Vector2(-4732, -775)
+
+[node name="Enemy_Only_Collider10" parent="You can delete this, just for testing" instance=ExtResource("15_thk2v")]
+position = Vector2(-1611, -1199)
+
+[node name="Enemy_Only_Collider11" parent="You can delete this, just for testing" instance=ExtResource("15_thk2v")]
+position = Vector2(1026, -1206)
+
+[node name="Enemy_Only_Collider12" parent="You can delete this, just for testing" instance=ExtResource("15_thk2v")]
+position = Vector2(4051, 532)
+
+[node name="Enemy_Only_Collider13" parent="You can delete this, just for testing" instance=ExtResource("15_thk2v")]
+position = Vector2(5649, 527)
