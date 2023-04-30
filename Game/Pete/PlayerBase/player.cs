@@ -18,25 +18,47 @@ public partial class player : RigidBody2D, Interactable
         Dead
     }
 
+    public enum AIStates
+    {
+        Idle,
+        Wander,
+    }
+
+    public struct State_Data
+    {
+        public State_Data() { }
+        public int hits = default;
+        public HashSet<object> attackers = new HashSet<object>();
+    }
+
+    public struct Ai_Data
+    {
+        public float target_time;
+
+    }
+
+
     [Export] public float move_speed = 200f, jump_strength = 500f, grounded_offset = -20f;
 
     [Export] public bool is_player;
 
     Statemachine<PlayerStates> state_machine = new Statemachine<PlayerStates>();
 
-    List<Godot.Node> node_buffer = new List<Node>();
+    State_Data state_data = new State_Data();
+    Ai_Data ai_data = new Ai_Data();
+
+
+    List<Godot.Node> results_buffer = new List<Node>();
     [Export] Node2D armature;
     [Export] AnimationPlayer animator;
-
-    HashSet<object> attackers = new HashSet<object>();
 
     public void OnEvent(object event_type)
     {
         switch (event_type)
         {
             case Events.OnAttack on_attacked:
-                if (attackers.Contains(on_attacked.Attacker)) return;
-                attackers.Add(on_attacked.Attacker);
+                if (state_data.attackers.Contains(on_attacked.Attacker)) return;
+                state_data.attackers.Add(on_attacked.Attacker);
                 LinearVelocity = on_attacked.force;
                 break;
         }
@@ -75,7 +97,6 @@ public partial class player : RigidBody2D, Interactable
             Debug.Label("velocity", LinearVelocity.ToString("0"));
             Debug.Label("position", Position.ToString("0"));
             Debug.Label("facing left", is_facing_left);
-            Debug.Label("attackers", attackers.Count);
             Debug.Label();
         }
 
@@ -123,12 +144,12 @@ public partial class player : RigidBody2D, Interactable
             switch (state_machine.current)
             {
                 case PlayerStates.Damaged:
-                    attackers.Clear();
+
                     armature.Modulate = Colors.White;
                     break;
 
                 case PlayerStates.KnockedOut:
-                    hits = 0;
+                    state_data.hits = 0;
                     goto case PlayerStates.Damaged;
             }
         }
@@ -141,8 +162,6 @@ public partial class player : RigidBody2D, Interactable
     bool is_grounded, has_wall_jumped;
     bool is_facing_left => armature.Scale.X > 0;
     Vector2 ground_normal;
-
-    int hits;
 
     void UpdateStatemachine(float delta)
     {
@@ -161,7 +180,7 @@ public partial class player : RigidBody2D, Interactable
                 if (!is_grounded) state_machine.next = PlayerStates.Falling;
                 if (input_jump) state_machine.next = PlayerStates.Jump;
 
-                if (attackers.Count > 0) state_machine.next = PlayerStates.Damaged;
+                if (state_data.attackers.Count > 0) state_machine.next = PlayerStates.Damaged;
                 break;
 
             case PlayerStates.Run:
@@ -183,7 +202,7 @@ public partial class player : RigidBody2D, Interactable
                 if (!is_grounded) state_machine.next = PlayerStates.Falling;
                 if (input_jump) state_machine.next = PlayerStates.Jump;
 
-                if (attackers.Count > 0) state_machine.next = PlayerStates.Damaged;
+                if (state_data.attackers.Count > 0) state_machine.next = PlayerStates.Damaged;
                 break;
 
             case PlayerStates.Falling:
@@ -260,7 +279,7 @@ public partial class player : RigidBody2D, Interactable
             case PlayerStates.Damaged:
                 if (state_machine.entered_state)
                 {
-                    hits++;
+                    state_data.hits++;
                     animator.Play("Damaged");
                     animator.Seek(0, true);
                 }
@@ -273,7 +292,7 @@ public partial class player : RigidBody2D, Interactable
                 if (!is_grounded)
                     state_machine.next = PlayerStates.Falling;
 
-                if (hits > 3)
+                if (state_data.hits > 3)
                     state_machine.next = PlayerStates.KnockedOut;
 
                 armature.Modulate = Colors.Red.Lerp(Colors.White, state_machine.state_time * 4f);
@@ -295,9 +314,9 @@ public partial class player : RigidBody2D, Interactable
                 var foot = armature.FindChild("Foot_Left") as Node2D;
                 grounded_query_params.Transform = foot.GlobalTransform;
 
-                if (Physics.TryOverlapShape2D(grounded_query_params, node_buffer, debug: Game.Show_Debug_Gizmos))
+                if (Physics.TryOverlapShape2D(grounded_query_params, results_buffer, debug: Game.Show_Debug_Gizmos))
                 {
-                    foreach (var node in node_buffer)
+                    foreach (var node in results_buffer)
                         if (node.TryFindParent(out Interactable interactable))
                         {
                             interactable.OnEvent(new Events.OnAttack
@@ -320,7 +339,7 @@ public partial class player : RigidBody2D, Interactable
                 armature.Modulate = Colors.Red.Lerp(Colors.White, state_machine.state_time / knockout_time);
 
                 LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 10f);
-                
+
                 if (!is_grounded || state_machine.state_time > knockout_time)
                     state_machine.next = PlayerStates.Idle;
                 break;
@@ -341,7 +360,7 @@ public partial class player : RigidBody2D, Interactable
             var transform = Transform2D.Identity;
             transform.Origin = Position + wall_jump_offset;
             grounded_query_params.Transform = transform;
-            return (Physics.TryOverlapShape2D(grounded_query_params, node_buffer, debug: Game.Show_Debug_Gizmos));
+            return (Physics.TryOverlapShape2D(grounded_query_params, results_buffer, debug: Game.Show_Debug_Gizmos));
         }
 
         void UpdateFacing(bool face_left)
