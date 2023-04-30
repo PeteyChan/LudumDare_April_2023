@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://di206v044b4kc"]
+
+[ext_resource type="Texture2D" uid="uid://bd6nxy4ghy4m5" path="res://Rick Assets/Floor/ConcreteEdge/ConcreteEdgeSide.png" id="1_vgo4m"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(256, 256)
+texture = ExtResource("1_vgo4m")
