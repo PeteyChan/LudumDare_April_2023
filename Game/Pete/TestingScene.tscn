@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://darlfucrkb86m"]
+[gd_scene load_steps=2 format=3 uid="uid://darlfucrkb86m"]
 
-[ext_resource type="PackedScene" uid="uid://b36dhs6q8cfii" path="res://Pete/PlayerBase/player.tscn" id="1_mnxmo"]
 [ext_resource type="PackedScene" uid="uid://d0ipw28l6byfl" path="res://Pete/test_collider.tscn" id="2_iv32r"]
 
 [node name="Testing" type="Node2D"]
@@ -31,6 +30,3 @@ rotation = 0.785398
 scale = Vector2(3.42756, 3.42756)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("1_mnxmo")]
-is_player = true

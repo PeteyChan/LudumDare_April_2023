@@ -4,6 +4,12 @@ using System.Collections.Generic;
 
 public partial class player : RigidBody2D, Interactable
 {
+    public enum PlayerType
+    {
+        cyberpunk_dude,
+        cyberpunk_girl,
+    }
+
     public enum PlayerStates
     {
         Idle,
@@ -41,6 +47,7 @@ public partial class player : RigidBody2D, Interactable
     [Export] public float move_speed = 900f, jump_strength = 2200f;
     [Export] public int health = 5;
     [Export] public bool is_player;
+    [Export] public PlayerType player_type = PlayerType.cyberpunk_dude;
 
     Statemachine<PlayerStates> state = new Statemachine<PlayerStates>();
     State_Data state_data = new State_Data();
@@ -156,10 +163,9 @@ public partial class player : RigidBody2D, Interactable
                             if (ai.state_time > ai_data.target_time)
                                 ai.next = AIStates.Idle;
 
-
-                            if (ai.update_count % 10 == 0 && Physics.TryOverlapCircle2D(
-                                GlobalPosition + new Vector2(face_left_value * -40, -80),
-                                30, results_buffer,
+                            if (ai.update_count % 3 == 0 && Physics.TryOverlapCircle2D(
+                                GlobalPosition + new Vector2(face_left_value * -60, -120),
+                                50, results_buffer,
                                 exclude: exclude_buffer, // this doesn't seem to be doing anything
                                 debug: Game.Show_Debug_Gizmos)
                             )
@@ -374,31 +380,42 @@ public partial class player : RigidBody2D, Interactable
                 if (state.entered_state)
                 {
                     animator.Play("Attack", customSpeed: 2f);
+
+                    if (input.move != 0)
+                        UpdateFacing(input.move < 0);
+
+                    LinearVelocity = new Vector2(-face_left_value * move_speed, 0);
                 }
                 LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 10f);
 
                 if (!is_grounded)
                     state.next = PlayerStates.Falling;
-                if (state.state_time > .25f)
+
+                if (state.state_time > .4f)
                     if (input.move == 0) state.next = PlayerStates.Idle;
                     else state.next = PlayerStates.Run;
 
-                var foot = armature.FindChild("Foot_Left") as Node2D;
-                grounded_query_params.Transform = foot.GlobalTransform;
-
-                if (Physics.TryOverlapShape2D(grounded_query_params, results_buffer, debug: Game.Show_Debug_Gizmos))
+                if (animator.CurrentAnimationPosition > .2f &&
+                    animator.CurrentAnimationPosition < .5f)
                 {
-                    foreach (var node in results_buffer)
-                        if (node.TryFindParent(out Interactable interactable))
-                        {
-                            interactable.OnEvent(new Events.OnAttack
+                    var foot = armature.FindChild("Foot_Left") as Node2D;
+                    grounded_query_params.Transform = foot.GlobalTransform;
+                    if (Physics.TryOverlapShape2D(grounded_query_params, results_buffer, debug: Game.Show_Debug_Gizmos))
+                    {
+                        foreach (var node in results_buffer)
+                            if (node.TryFindParent(out Interactable interactable))
                             {
-                                Attacker = this,
-                                force = new Vector2(move_speed * (is_facing_left ? -1 : 1), 0),
-                            });
-                        }
+                                interactable.OnEvent(new Events.OnAttack
+                                {
+                                    Attacker = this,
+                                    force = new Vector2(move_speed * (is_facing_left ? -1 : 1), 0),
+                                });
+                            }
+                    }
                 }
                 break;
+
+
 
             case PlayerStates.KnockedOut:
                 if (state.entered_state)
