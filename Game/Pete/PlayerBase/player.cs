@@ -2,6 +2,13 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+static class Layers
+{
+    public const int Default = 1;
+    public const int Players = 1 << 1;
+    public const int EnemyOnlyCollision = 1 << 2;
+}
+
 public partial class player : RigidBody2D, Interactable
 {
     public enum PlayerType
@@ -21,7 +28,8 @@ public partial class player : RigidBody2D, Interactable
         Attack,
         Damaged,
         KnockedOut,
-        Dead
+        Dead,
+        Collect
     }
 
     public enum AIStates
@@ -30,17 +38,26 @@ public partial class player : RigidBody2D, Interactable
         Wander,
     }
 
-    public struct State_Data
+    public class State_Data
     {
-        public State_Data() { }
         public int hits = default;
         public HashSet<object> attackers = new HashSet<object>();
     }
 
-    public struct Ai_Data
+    public class Ai_Data
     {
         public float target_time;
 
+    }
+
+    public class PlayerLimbs
+    {
+        Limb[] limbs = new Limb[System.Enum.GetValues<Limb.Type>().Length];
+        public Limb this[Limb.Type type]
+        {
+            get => limbs[(int)type];
+            set => limbs[(int)type] = value;
+        }
     }
 
 
@@ -49,12 +66,35 @@ public partial class player : RigidBody2D, Interactable
     [Export] public bool is_player;
     [Export] public PlayerType player_type = PlayerType.cyberpunk_dude;
 
+    [Export]
+    public Limb.Color
+        limb_color_head,
+        limb_color_left_arm,
+        limb_color_right_arm,
+        limb_color_left_leg,
+        limb_color_right_leg;
+
+    int leg_count
+    {
+        get
+        {
+            int count = 0;
+            if (limbs[Limb.Type.Left_Leg] != null)
+                count++;
+            if (limbs[Limb.Type.Right_Leg] != null)
+                count++;
+            return count;
+        }
+    }
+
+    public Limb Inventory;
+    public CollectionPoint.Target target;
+    public PlayerLimbs limbs = new PlayerLimbs();
     Statemachine<PlayerStates> state = new Statemachine<PlayerStates>();
     State_Data state_data = new State_Data();
     Statemachine<AIStates> ai = new Statemachine<AIStates>();
     Ai_Data ai_data = new Ai_Data();
-
-    (float move, bool jump, bool attack) input = default;
+    (float move, bool jump, bool attack, bool collect) input = default;
     List<Godot.Node> results_buffer = new List<Node>();
     List<Godot.Node> exclude_buffer;
     Node2D armature;
@@ -77,6 +117,7 @@ public partial class player : RigidBody2D, Interactable
         {
             Shape = new CircleShape2D { Radius = 25 },
             CollideWithBodies = true,
+            CollisionMask = Layers.Default,
             Exclude = new Godot.Collections.Array<Rid> { this.GetRid() },
         };
 
@@ -85,10 +126,21 @@ public partial class player : RigidBody2D, Interactable
 
         exclude_buffer = new List<Node> { this };
 
+        CollisionLayer = Layers.Players;
+        CollisionMask = Layers.Default;
         if (is_player)
         {
             var camera = GD.Load<PackedScene>("res://Pete/PlayerBase/player_camera.tscn").Instantiate() as Camera2D;
             AddChild(camera);
+        }
+        else
+        {
+            CollisionMask |= Layers.EnemyOnlyCollision;
+        }
+
+        foreach (var limb in System.Enum.GetValues<Limb.Type>())
+        {
+            limbs[limb] = new Limb(this, limb);
         }
     }
 
@@ -124,7 +176,7 @@ public partial class player : RigidBody2D, Interactable
         void LimitVelocity()
         {
             var velcoity = LinearVelocity;
-            float max = 2000;
+            float max = 2500;
             velcoity.X = velcoity.X.Clamp(-max, max);
             velcoity.Y = velcoity.Y.Clamp(-max, max);
             if (velcoity != LinearVelocity)
@@ -137,7 +189,8 @@ public partial class player : RigidBody2D, Interactable
             {
                 input.move = Game.move_right.CurrentValue() - Game.move_left.CurrentValue();
                 input.jump = Game.jump.Pressed();
-                input.attack = Game.attack.Pressed();
+                input.attack = Game.attack.OnPressed();
+                input.collect = Game.collect.OnPressed();
             }
             else
             {
@@ -189,17 +242,6 @@ public partial class player : RigidBody2D, Interactable
                                     input.move = -input.move;
                                 }
                             }
-
-                            if (!Physics.TryOverlapCircle2D(
-                                GlobalPosition + new Vector2(face_left_value * -80, 20),
-                                30, results_buffer,
-                                exclude: exclude_buffer, // this doesn't seem to be doing anything
-                                debug: Game.Show_Debug_Gizmos)
-                            )
-                            {
-                                input.move = -input.move;
-                            }
-
                             break;
                         }
 
@@ -207,6 +249,11 @@ public partial class player : RigidBody2D, Interactable
                         ai.next = AIStates.Idle;
                         break;
                 }
+
+                if (Inputs.key_pad_4.Pressed())
+                    input.move = -1;
+                if (Inputs.key_pad_6.Pressed())
+                    input.move = 1;
             }
 
             input.move = input.move.Clamp(-1, 1);
@@ -225,6 +272,7 @@ public partial class player : RigidBody2D, Interactable
                     break;
 
                 case PlayerStates.KnockedOut:
+
                     state_data.hits = 0;
                     goto case PlayerStates.Damaged;
             }
@@ -252,10 +300,12 @@ public partial class player : RigidBody2D, Interactable
                 LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 7f);
 
                 if (input.move.Abs() > .3f) state.next = PlayerStates.Run;
-                if (input.attack) state.next = PlayerStates.Attack;
-                if (!is_grounded) state.next = PlayerStates.Falling;
-                if (input.jump) state.next = PlayerStates.Jump;
 
+                if (input.collect) state.next = PlayerStates.Collect;
+                TryAttacking();
+                TryJumping();
+
+                if (!is_grounded) state.next = PlayerStates.Falling;
                 if (state_data.attackers.Count > 0) state.next = PlayerStates.Damaged;
                 break;
 
@@ -264,18 +314,27 @@ public partial class player : RigidBody2D, Interactable
                 {
                     if (input.move != 0)
                     {
-                        animator.Play("Run", .2f, customSpeed: 1.5f);
+                        if (leg_count < 2)
+                            animator.Play("Hop", .2f, customSpeed: 2f);
+                        else
+                            animator.Play("Run", .2f, customSpeed: 1.5f);
                     }
                 }
 
                 var target_speed = new Vector2(move_speed * (is_facing_left ? -1 : 1), -20f);
 
+                if (leg_count < 2)
+                    target_speed.X /= 5f;
+
                 LinearVelocity = LinearVelocity.Lerp(target_speed, delta * 7f);
 
                 if (input.move.Abs() < .3f) state.next = PlayerStates.Idle;
-                if (input.attack) state.next = PlayerStates.Attack;
+                if (input.collect) state.next = PlayerStates.Collect;
+
+                TryAttacking();
+                TryJumping();
+
                 if (!is_grounded) state.next = PlayerStates.Falling;
-                if (input.jump) state.next = PlayerStates.Jump;
 
                 if (state_data.attackers.Count > 0) state.next = PlayerStates.Damaged;
 
@@ -400,9 +459,12 @@ public partial class player : RigidBody2D, Interactable
                 {
                     var foot = armature.FindChild("Foot_Left") as Node2D;
                     grounded_query_params.Transform = foot.GlobalTransform;
-                    if (Physics.TryOverlapShape2D(grounded_query_params, results_buffer, debug: Game.Show_Debug_Gizmos))
+
+                    if (Physics.TryOverlapCircle2D(foot.GlobalPosition, 20, results_buffer, mask: Layers.Players, exclude: exclude_buffer, debug: Game.Show_Debug_Gizmos))
                     {
                         foreach (var node in results_buffer)
+                        {
+                            if (node == this) continue;
                             if (node.TryFindParent(out Interactable interactable))
                             {
                                 interactable.OnEvent(new Events.OnAttack
@@ -411,11 +473,10 @@ public partial class player : RigidBody2D, Interactable
                                     force = new Vector2(move_speed * (is_facing_left ? -1 : 1), 0),
                                 });
                             }
+                        }
                     }
                 }
                 break;
-
-
 
             case PlayerStates.KnockedOut:
                 if (state.entered_state)
@@ -425,12 +486,61 @@ public partial class player : RigidBody2D, Interactable
 
                 float knockout_time = 5f;
 
-                armature.Modulate = Colors.Red.Lerp(Colors.White, state.state_time / knockout_time);
+                armature.Modulate = Colors.Red.Lerp(Colors.White, (state.state_time / knockout_time).MaxValue(1));
 
-                LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 10f);
+                var vel = LinearVelocity;
+                vel.X = vel.X.Lerp(0, delta * 10f);
+                LinearVelocity = vel;
 
-                if (!is_grounded || state.state_time > knockout_time)
+
+                if (limbs[Limb.Type.Head] == null)
+                    break;
+
+                if (leg_count == 0)
+                    break;
+
+                if (state.state_time > knockout_time)
                     state.next = PlayerStates.Idle;
+                break;
+
+            case PlayerStates.Collect:
+                if (state.entered_state)
+                {
+                    animator.Play("Crouching", .1f);
+
+                    Vector2 label_position = Position + new Vector2(0, -240);
+
+                    if (Inventory != null)
+                    {
+                        OneOffLabel.Spawn(label_position, "Inventory is full");
+                        return;
+                    }
+
+                    else if (Physics.TryOverlapCircle2D(Position, 100, results_buffer, exclude: exclude_buffer, debug: Game.Show_Debug_Gizmos))
+                    {
+                        foreach (var node in results_buffer)
+                            if (node.TryFindParent(out player player) && player.state.current == PlayerStates.KnockedOut)
+                            {
+                                var limb = player.limbs[target.limb];
+                                if (target.Match(limb))
+                                {
+                                    Inventory = limb;
+                                    player.limbs[target.limb] = null;
+                                    foreach (var target_nodes in player.GetLimbNodes(target.limb))
+                                    {
+                                        target_nodes.Visible = false;
+                                    }
+                                    OneOffLabel.Spawn(label_position, "Got Target Limb!!");
+                                    return;
+                                }
+                            }
+                    }
+                    
+                    OneOffLabel.Spawn(label_position, "Nothing Here");
+                }
+
+                if (state.state_time > .5f) state.next = PlayerStates.Idle;
+                LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 10f);
                 break;
 
             default:
@@ -461,6 +571,68 @@ public partial class player : RigidBody2D, Interactable
                 scale.X = -scale.X;
             armature.Scale = scale;
         }
+
+        void TryJumping()
+        {
+            if (input.jump)
+            {
+                if (leg_count == 2)
+                    state.next = PlayerStates.Jump;
+            }
+        }
+
+        void TryAttacking()
+        {
+            if (input.attack)
+            {
+                if (leg_count == 2)
+                    state.next = PlayerStates.Attack;
+            }
+        }
+    }
+
+    public Node2D[] GetLimbNodes(Limb.Type type)
+    {
+        var nodes = new List<Node2D>();
+        switch (type)
+        {
+            case Limb.Type.Head:
+                Get("Head");
+                break;
+
+            case Limb.Type.Left_Arm:
+                Get("Shoulder_Left");
+                Get("Forearm_Left");
+                Get("Hand_Left");
+                break;
+
+            case Limb.Type.Right_Arm:
+                Get("Shoulder_Right");
+                Get("Forearm_Right");
+                Get("Hand_Right");
+                break;
+
+            case Limb.Type.Left_Leg:
+                Get("Thigh_Left");
+                Get("Calf_Left");
+                Get("Foot_Left");
+                break;
+
+            case Limb.Type.Right_Leg:
+                Get("Thigh_Right");
+                Get("Calf_Right");
+                Get("Foot_Right");
+                break;
+        }
+
+        void Get(string name)
+        {
+            var node = armature.FindChild(name) as Node2D;
+            if (!node.IsValid()) throw new Debug.Exception(this.Name, "failed to find ", name);
+            nodes.Add(node);
+        }
+
+        return nodes.ToArray();
     }
 }
 
@@ -490,5 +662,72 @@ class Statemachine<T> where T : struct, Enum
             state_time += delta;
         }
         return current;
+    }
+}
+
+public class Limb
+{
+    public Limb(player player, Type type)
+    {
+        switch (type)
+        {
+            case Type.Head:
+                color = player.limb_color_head;
+                break;
+            case Type.Left_Arm:
+                color = player.limb_color_left_arm;
+                break;
+
+            case Type.Right_Arm:
+                color = player.limb_color_right_arm;
+                break;
+
+            case Type.Left_Leg:
+                color = player.limb_color_left_leg;
+                break;
+
+            case Type.Right_Leg:
+                color = player.limb_color_right_leg;
+                break;
+        }
+
+        this.type = type;
+        player_type = player.player_type;
+
+        Godot.Color modulate_color = Colors.White;
+        switch (color)
+        {
+            case Color.Blue: modulate_color = Colors.NavyBlue; break;
+            case Color.Green: modulate_color = Colors.Green; break;
+            case Color.Pink: modulate_color = Colors.Pink; break;
+            case Color.Purple: modulate_color = Colors.Purple; break;
+        }
+
+        foreach (var node in player.GetLimbNodes(type))
+        {
+            node.Modulate = modulate_color;
+        }
+    }
+
+    public Color color = default;
+    public Type type;
+    public player.PlayerType player_type;
+
+    public enum Color
+    {
+        None,
+        Blue,
+        Green,
+        Pink,
+        Purple,
+    }
+
+    public enum Type
+    {
+        Head,
+        Left_Arm,
+        Right_Arm,
+        Left_Leg,
+        Right_Leg
     }
 }
