@@ -1,6 +1,7 @@
 public static class Game
 {
     public static bool Show_Debug_Gizmos = false;
+    public static Inputs move_left = Inputs.key_a, move_right = Inputs.key_d, jump = Inputs.key_space, attack = Inputs.mouse_left_click;
     
     static void GameSettings(Debug.Console args)
     {
