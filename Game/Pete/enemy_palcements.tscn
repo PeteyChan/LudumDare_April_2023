@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://2lra3rm01ya4"]
+
+[ext_resource type="PackedScene" uid="uid://byls1e7obrc8u" path="res://Assets/Actors/cyberpunk_dude.tscn" id="1_3682x"]
+[ext_resource type="PackedScene" uid="uid://cobnqll8l18oy" path="res://Assets/Actors/cyberpunk_girl.tscn" id="2_ia42m"]
+[ext_resource type="PackedScene" uid="uid://0xhm4uukky8c" path="res://Assets/enemy_only_collider.tscn" id="3_ejsxf"]
+
+[node name="You can delete this, just for testing" type="Node"]
+
+[node name="Cyberpunk_dude2" parent="." instance=ExtResource("1_3682x")]
+position = Vector2(-393, -1186)
+
+[node name="Cyberpunk_dude3" parent="." instance=ExtResource("1_3682x")]
+position = Vector2(4962, 496)
+
+[node name="Cyberpunk_dude4" parent="." instance=ExtResource("1_3682x")]
+position = Vector2(4903, -2462)
+
+[node name="Cyberpunk_dude5" parent="." instance=ExtResource("1_3682x")]
+position = Vector2(9734, -2869)
+
+[node name="Cyberpunk_dude6" parent="." instance=ExtResource("1_3682x")]
+position = Vector2(10024, 215)
+
+[node name="Cyberpunk_Girl" parent="." instance=ExtResource("2_ia42m")]
+position = Vector2(-3754, -803)
+move_speed = 500.0
+
+[node name="Cyberpunk_Girl2" parent="." instance=ExtResource("2_ia42m")]
+position = Vector2(-6272, 1867)
+move_speed = 500.0
+
+[node name="Cyberpunk_Girl3" parent="." instance=ExtResource("2_ia42m")]
+position = Vector2(-5399, 1867)
+move_speed = 500.0
+
+[node name="Cyberpunk_Girl4" parent="." instance=ExtResource("2_ia42m")]
+position = Vector2(7935, 267)
+move_speed = 500.0
+
+[node name="Cyberpunk_Girl5" parent="." instance=ExtResource("2_ia42m")]
+position = Vector2(-937, -1193)
+move_speed = 500.0
+
+[node name="Enemy_Only_Collider" parent="." instance=ExtResource("3_ejsxf")]
+position = Vector2(10724, -2791)
+
+[node name="Enemy_Only_Collider2" parent="." instance=ExtResource("3_ejsxf")]
+position = Vector2(8165, -2791)
+
+[node name="Enemy_Only_Collider3" parent="." instance=ExtResource("3_ejsxf")]
+position = Vector2(5620, -2342)
+
+[node name="Enemy_Only_Collider4" parent="." instance=ExtResource("3_ejsxf")]
+position = Vector2(4027, -2334)
+
+[node name="Enemy_Only_Collider6" parent="." instance=ExtResource("3_ejsxf")]
+position = Vector2(7110, 350)
+
+[node name="Enemy_Only_Collider7" parent="." instance=ExtResource("3_ejsxf")]
+position = Vector2(-965, 900)
+
+[node name="Enemy_Only_Collider8" parent="." instance=ExtResource("3_ejsxf")]
+position = Vector2(-1873, -775)
+
+[node name="Enemy_Only_Collider9" parent="." instance=ExtResource("3_ejsxf")]
+position = Vector2(-4732, -775)
+
+[node name="Enemy_Only_Collider10" parent="." instance=ExtResource("3_ejsxf")]
+position = Vector2(-1611, -1199)
+
+[node name="Enemy_Only_Collider11" parent="." instance=ExtResource("3_ejsxf")]
+position = Vector2(1026, -1206)
+
+[node name="Enemy_Only_Collider12" parent="." instance=ExtResource("3_ejsxf")]
+position = Vector2(4051, 532)
+
+[node name="Enemy_Only_Collider13" parent="." instance=ExtResource("3_ejsxf")]
+position = Vector2(5649, 527)
