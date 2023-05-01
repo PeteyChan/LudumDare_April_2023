@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://byt724vpwg6u2"]
+[gd_scene load_steps=16 format=3]
 
 [ext_resource type="PackedScene" uid="uid://cdnlr4rlweagm" path="res://Rick Assets/StreetLamp01.tscn" id="2_rueyj"]
 [ext_resource type="PackedScene" uid="uid://b5cogeuwci3g3" path="res://Rick Assets/Prefabs/Bridge01.tscn" id="3_baena"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" path="res://Rick Assets/Prefabs/PopUpShop.tscn" id="11_5e8f0"]
 [ext_resource type="PackedScene" uid="uid://byls1e7obrc8u" path="res://Assets/Actors/cyberpunk_dude.tscn" id="12_80q0b"]
 [ext_resource type="Texture2D" uid="uid://xyuctgdb1vyk" path="res://Rick Assets/Environment/ChineseStore.png" id="12_q6b75"]
-[ext_resource type="PackedScene" uid="uid://bqhylm6788twm" path="res://Assets/collection_point.tscn" id="13_ii1uh"]
+[ext_resource type="PackedScene" uid="uid://bqhylm6788twm" path="res://Assets/CollectionPoint/collection_point.tscn" id="13_ii1uh"]
 [ext_resource type="PackedScene" uid="uid://cobnqll8l18oy" path="res://Assets/Actors/cyberpunk_girl.tscn" id="14_vhnx8"]
 [ext_resource type="PackedScene" uid="uid://0xhm4uukky8c" path="res://Assets/enemy_only_collider.tscn" id="15_thk2v"]
 

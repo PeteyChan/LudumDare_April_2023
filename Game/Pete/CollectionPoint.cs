@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class CollectionPoint : Area2D
 {
@@ -19,11 +20,15 @@ public partial class CollectionPoint : Area2D
 
     public Target target;
 
-    int remaining = 5;
-
+    Queue<collection_target> collection_targets = new Queue<collection_target>();
     public override void _EnterTree()
     {
-        target.limb = System.Enum.GetValues<Limb.Type>().RandomElement();
+        label = FindChild("Label") as Label;
+
+        foreach (var collection_target in this.FindAll<collection_target>())
+            collection_targets.Enqueue(collection_target);
+
+        TryGetNextTarget();
 
         this.BodyEntered += body =>
         {
@@ -31,23 +36,37 @@ public partial class CollectionPoint : Area2D
             {
                 if (target.Match(player.Inventory))
                 {
-                    remaining -= 1;
-                    target.limb = System.Enum.GetValues<Limb.Type>().RandomElement();
-                    target.player = System.Enum.GetValues<player.PlayerType>().RandomElement();
-					player.Inventory = default;
-					player.target = target;
-                    OneOffLabel.Spawn(Position + new Vector2(0, -400), $"{remaining} To Go!!");
+                    player.Inventory = default;
+
+                    if (!TryGetNextTarget()) return;
+
+                    string text = collection_targets.Count == 0 ? "Last one!" : $"{collection_targets.Count + 1} To Go!!";
+                    
+                    OneOffLabel.Spawn(Position + new Vector2(0, -400), text);
                 }
 
-                label.Text = $"Limb: {target.limb}\ncolor: {target.color}\ntype: {target.player}\n";
                 player.target = target;
-
-                if (remaining <= 0)
-                    Scene.Load("res://Scenes/Win/win.tscn");
             }
         };
-        label = FindChild("Label") as Label;
     }
 
     Label label;
+
+    bool TryGetNextTarget()
+    {
+        if (collection_targets.TryDequeue(out var next))
+        {
+            target.limb = next.limb;
+            target.color = next.color;
+            target.player = next.type;
+
+            label.Text = $"Limb: {target.limb}\ncolor: {target.color}\ntype: {target.player}\n";
+            return true;
+        }
+        else
+        {
+            Scene.Load("res://Scenes/Win/win.tscn");
+            return false;
+        }
+    }
 }
