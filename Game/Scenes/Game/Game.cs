@@ -8,6 +8,8 @@ public static class Game
         attack = Inputs.mouse_left_click,
         collect = Inputs.key_e;
 
+    public static float score;
+
     static void Update(Bootstrap.Process args)
     {
         if (Inputs.key_f1.OnPressed())

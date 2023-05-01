@@ -156,6 +156,7 @@ public partial class player : RigidBody2D, Interactable
 
     public override void _Process(double delta)
     {
+        Game.score = state.total_time;
         LimitVelocity();
         UpdateGrounded();
         ProcessInput((float)delta);
