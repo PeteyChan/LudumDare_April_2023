@@ -13,7 +13,7 @@ config_version=5
 config/name="Game"
 run/main_scene="res://Scenes/Title/Title.tscn"
 config/features=PackedStringArray("4.0", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Pete/Icon/icon.png"
 
 [autoload]
 
