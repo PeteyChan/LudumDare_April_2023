@@ -39,6 +39,3 @@ collision_layer = 3
 
 [node name="Cyberpunk_dude" parent="." instance=ExtResource("3_nhvkq")]
 position = Vector2(7, -24)
-is_player = true
-limb_color_left_leg = 2
-limb_color_right_leg = 4
