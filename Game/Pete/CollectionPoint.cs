@@ -31,7 +31,7 @@ public partial class CollectionPoint : Area2D
         if (collection_targets.Count > 0)
             TryGetNextTarget();
 
-        label.Text = $"Limb: {target.limb}\ncolor: {target.color}\ntype: {target.player}\n";
+        UpdateLabel();
 
         this.BodyEntered += body =>
         {
@@ -63,7 +63,7 @@ public partial class CollectionPoint : Area2D
             target.color = next.color;
             target.player = next.type;
 
-            label.Text = $"Limb: {target.limb}\ncolor: {target.color}\ntype: {target.player}\n";
+            UpdateLabel();
             return true;
         }
         else
@@ -71,5 +71,11 @@ public partial class CollectionPoint : Area2D
             Scene.Load("res://Scenes/Win/win.tscn");
             return false;
         }
+    }
+
+    void UpdateLabel()
+    {
+        label.Text = $"--Target--\nLimb: {target.limb}\nFrom: {target.player}\n";
+        //label.Text = $"Limb: {target.limb}\ncolor: {target.color}\ntype: {target.player}\n";
     }
 }

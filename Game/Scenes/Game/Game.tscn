@@ -32,6 +32,10 @@ type = 1
 [node name="CollectionTarget5" parent="Collection_Point" instance=ExtResource("2_x55ut")]
 
 [node name="CollectionTarget6" parent="Collection_Point" instance=ExtResource("2_x55ut")]
+limb = 3
+type = 2
+
+[node name="CollectionTarget7" parent="Collection_Point" instance=ExtResource("2_x55ut")]
 type = 2
 
 [node name="level" parent="." instance=ExtResource("1_rip64")]
