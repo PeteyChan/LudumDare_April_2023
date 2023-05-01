@@ -119,7 +119,10 @@ position = Vector2(122, -1115)
 position = Vector2(-47, 1046)
 
 [node name="Bin6" parent="bins" instance=ExtResource("8_36etr")]
-position = Vector2(655, -1058)
+position = Vector2(351, -1054)
+
+[node name="Bin7" parent="bins" instance=ExtResource("8_36etr")]
+position = Vector2(-1267, -1054)
 
 [node name="Bin2" parent="bins" instance=ExtResource("8_36etr")]
 position = Vector2(-3395, 1750)

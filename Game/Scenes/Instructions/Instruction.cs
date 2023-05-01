@@ -9,18 +9,18 @@ namespace SceneAssets.Instructions
         {
             Text =
             @$"
-			-- Objective --
-			Deliver the specified parts to the collector as fast a possible.
-			Parts can only be retrieved while the owners are knocked out.
+-- Objective --
+Deliver the specified parts to the collector as fast a possible.
+Parts can only be retrieved while the owners are knocked out.
 
-			-- Controls --
-			Move Left :	{Game.move_left}
-			Move Right: {Game.move_right}
-			Attack: {Game.attack}
-			Collect: {Game.collect}
-            Back to Title: {Game.back_to_title}
+-- Controls --
+Move Left :	{Game.move_left}
+Move Right: {Game.move_right}
+Attack: {Game.attack}
+Collect: {Game.collect}
+Back to Title: {Game.back_to_title}
 
-            -- Press Attack to Continue -- 			
+-- Press Attack to Continue -- 			
 			";
         }
 

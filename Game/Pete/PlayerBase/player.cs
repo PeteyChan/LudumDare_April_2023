@@ -233,7 +233,7 @@ public partial class player : RigidBody2D, Interactable
 
                             if (ai.update_count % 3 == 0 && Physics.TryOverlapCircle2D(
                                 GlobalPosition + new Vector2(face_left_value * -60, -120),
-                                50, results_buffer,
+                                50, results_buffer, collide_area: false,
                                 exclude: exclude_buffer, // this doesn't seem to be doing anything
                                 debug: Game.Show_Debug_Gizmos)
                             )
