@@ -299,7 +299,7 @@ public static class Physics
         return results.Count > 0;
     }
 
-    public static bool TryOverlapCircle2D(Vector2 global_position, float radius, List<Node> results, int max_results = 32, uint mask = uint.MaxValue, List<Godot.Node> exclude = default, bool debug = false)
+    public static bool TryOverlapCircle2D(Vector2 global_position, float radius, List<Node> results, int max_results = 32, uint mask = uint.MaxValue, bool collide_body = true, bool collide_area = true, List<Godot.Node> exclude = default, bool debug = false)
     {
         shape_query_params_2d.Exclude.Clear();
         if (exclude != null)
@@ -313,7 +313,8 @@ public static class Physics
         Transform2D transform = Transform2D.Identity;
         transform.Origin = global_position;
         shape_query_params_2d.Transform = transform;
-
+        shape_query_params_2d.CollideWithBodies = collide_body;
+        shape_query_params_2d.CollideWithAreas = collide_area;
         circle.Radius = radius;
         shape_query_params_2d.Shape = circle;
         return TryOverlapShape2D(shape_query_params_2d, results, max_results, debug);

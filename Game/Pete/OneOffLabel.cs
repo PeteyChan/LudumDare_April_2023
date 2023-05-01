@@ -17,8 +17,7 @@ public partial class OneOffLabel : Label
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        Debug.Label(lifetime);
-
+        Modulate = Colors.White.Lerp(new Color(1, 1, 1, 0), (1 - lifetime).Clamp(0, 1));
         lifetime -= (float)delta;
         if (lifetime < 0)
             this.DestroyNode();

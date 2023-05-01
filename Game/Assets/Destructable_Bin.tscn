@@ -1,0 +1,213 @@
+[gd_scene load_steps=11 format=3 uid="uid://dua8tqf6qr2ye"]
+
+[ext_resource type="Texture2D" uid="uid://28dcc7v351rb" path="res://Pete/Bin/Bin1.png" id="1_1wdhv"]
+[ext_resource type="Script" path="res://Pete/Bin/Bin.cs" id="2_usk2k"]
+
+[sub_resource type="Animation" id="Animation_pog3e"]
+resource_name = "Break"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-116, -334), Vector2(-168, -120), Vector2(-264, -172), Vector2(-325, -122), Vector2(-551, 47)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.006342, -0.197199, -0.20847, -1.56988]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Sprite2D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4, -268), Vector2(-32, -183), Vector2(-81, -105), Vector2(-70, -3), Vector2(-54, 27)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Sprite2D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0233366, 1.51459, 1.42319, 1.63218]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/Sprite2D3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(127, -340), Vector2(184, -116), Vector2(290, -144), Vector2(393, -65), Vector2(531, 71)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/Sprite2D3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0888342, 0.395156, 0.875218, 1.57194]
+}
+
+[sub_resource type="Animation" id="Animation_vlgvd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-116, -334)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Sprite2D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, -268)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Sprite2D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/Sprite2D3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(127, -340)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/Sprite2D3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eik82"]
+_data = {
+"Break": SubResource("Animation_pog3e"),
+"RESET": SubResource("Animation_vlgvd")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xend"]
+atlas = ExtResource("1_1wdhv")
+region = Rect2(70.6794, 699.881, 429.147, 280.596)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pini8"]
+atlas = ExtResource("1_1wdhv")
+region = Rect2(26.2621, 42.7679, 188.636, 532.896)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgb6i"]
+atlas = ExtResource("1_1wdhv")
+region = Rect2(295.068, 28.6202, 271.164, 648.436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrtr3"]
+atlas = ExtResource("1_1wdhv")
+region = Rect2(622.823, 45.1258, 167.414, 575.339)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kj02m"]
+size = Vector2(371, 710)
+
+[node name="Bin" type="Node2D"]
+script = ExtResource("2_usk2k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eik82")
+}
+
+[node name="Node2D" type="Sprite2D" parent="."]
+position = Vector2(0, -26)
+scale = Vector2(0.172858, 0.172858)
+texture = SubResource("AtlasTexture_2xend")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(-116, -334)
+texture = SubResource("AtlasTexture_pini8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
+position = Vector2(4, -268)
+texture = SubResource("AtlasTexture_lgb6i")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D"]
+position = Vector2(127, -340)
+texture = SubResource("AtlasTexture_jrtr3")
+
+[node name="Area2D" type="Area2D" parent="Node2D"]
+position = Vector2(0, 139)
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+position = Vector2(-2.5, -365)
+shape = SubResource("RectangleShape2D_kj02m")

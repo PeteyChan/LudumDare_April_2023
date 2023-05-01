@@ -13,7 +13,6 @@ public static partial class Scene
             var old = Tree.CurrentScene;
             old.OnDestroy(() =>
             {
-                //Debug.Log("Destroying", old.Name);
                 Tree.CurrentScene = value;
                 _current = null;
             });

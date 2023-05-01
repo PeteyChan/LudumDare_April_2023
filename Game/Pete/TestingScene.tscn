@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://darlfucrkb86m"]
+[gd_scene load_steps=7 format=3 uid="uid://cjthqhv8yq3ee"]
 
 [ext_resource type="PackedScene" uid="uid://d0ipw28l6byfl" path="res://Pete/test_collider.tscn" id="2_iv32r"]
-[ext_resource type="PackedScene" uid="uid://bqhylm6788twm" path="res://Assets/collection_point.tscn" id="2_qwd6v"]
+[ext_resource type="PackedScene" uid="uid://bqhylm6788twm" path="res://Assets/CollectionPoint/collection_point.tscn" id="2_qwd6v"]
+[ext_resource type="PackedScene" uid="uid://cxdntkomy42dw" path="res://Assets/CollectionPoint/collection_target.tscn" id="3_nbeli"]
 [ext_resource type="PackedScene" uid="uid://byls1e7obrc8u" path="res://Assets/Actors/cyberpunk_dude.tscn" id="3_nhvkq"]
+[ext_resource type="PackedScene" uid="uid://dua8tqf6qr2ye" path="res://Assets/Destructable_Bin.tscn" id="5_vv5e2"]
+[ext_resource type="PackedScene" uid="uid://0xhm4uukky8c" path="res://Assets/enemy_only_collider.tscn" id="6_s6e1j"]
 
 [node name="Testing" type="Node2D"]
 
@@ -23,8 +26,8 @@ position = Vector2(3431, 44)
 scale = Vector2(1.62822, 1.62822)
 
 [node name="TestCollider8" parent="." instance=ExtResource("2_iv32r")]
-position = Vector2(-1, 341)
-scale = Vector2(5.58822, 1.62822)
+position = Vector2(6, 341)
+scale = Vector2(6.62822, 1.62822)
 
 [node name="TestCollider5" parent="." instance=ExtResource("2_iv32r")]
 position = Vector2(1441, 497)
@@ -37,5 +40,26 @@ scale = Vector2(3.42756, 3.42756)
 position = Vector2(2, 217)
 collision_layer = 3
 
+[node name="CollectionTarget" parent="Collection_Point" instance=ExtResource("3_nbeli")]
+
+[node name="CollectionTarget2" parent="Collection_Point" instance=ExtResource("3_nbeli")]
+limb = 3
+
+[node name="CollectionTarget3" parent="Collection_Point" instance=ExtResource("3_nbeli")]
+limb = 4
+
+[node name="CollectionTarget4" parent="Collection_Point" instance=ExtResource("3_nbeli")]
+limb = 1
+
+[node name="CollectionTarget5" parent="Collection_Point" instance=ExtResource("3_nbeli")]
+limb = 2
+
 [node name="Cyberpunk_dude" parent="." instance=ExtResource("3_nhvkq")]
 position = Vector2(7, -24)
+is_player = true
+
+[node name="Bin" parent="." instance=ExtResource("5_vv5e2")]
+position = Vector2(849, 445)
+
+[node name="Enemy_Only_Collider" parent="." instance=ExtResource("6_s6e1j")]
+position = Vector2(11371, -2921)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxdntkomy42dw"]
+
+[ext_resource type="Script" path="res://Pete/collection_target.cs" id="1_encq4"]
+
+[node name="CollectionTarget" type="Node"]
+script = ExtResource("1_encq4")

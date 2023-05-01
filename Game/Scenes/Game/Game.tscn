@@ -1,3 +1,34 @@
-[gd_scene format=3 uid="uid://bkobsqseyni8n"]
+[gd_scene load_steps=5 format=3 uid="uid://bkobsqseyni8n"]
+
+[ext_resource type="PackedScene" uid="uid://byt724vpwg6u2" path="res://Rick Assets/Ricks Test Scene.tscn" id="1_rip64"]
+[ext_resource type="PackedScene" uid="uid://bqhylm6788twm" path="res://Assets/CollectionPoint/collection_point.tscn" id="1_sjtjf"]
+[ext_resource type="PackedScene" uid="uid://2lra3rm01ya4" path="res://Pete/enemy_palcements.tscn" id="2_0yd66"]
+[ext_resource type="PackedScene" uid="uid://cxdntkomy42dw" path="res://Assets/CollectionPoint/collection_target.tscn" id="2_x55ut"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Collection_Point" parent="." instance=ExtResource("1_sjtjf")]
+z_index = -20
+position = Vector2(1141, 1030)
+
+[node name="CollectionTarget" parent="Collection_Point" instance=ExtResource("2_x55ut")]
+limb = 3
+
+[node name="CollectionTarget2" parent="Collection_Point" instance=ExtResource("2_x55ut")]
+limb = 4
+type = 1
+
+[node name="CollectionTarget3" parent="Collection_Point" instance=ExtResource("2_x55ut")]
+limb = 2
+
+[node name="CollectionTarget4" parent="Collection_Point" instance=ExtResource("2_x55ut")]
+limb = 2
+type = 1
+
+[node name="CollectionTarget5" parent="Collection_Point" instance=ExtResource("2_x55ut")]
+
+[node name="level" parent="." instance=ExtResource("1_rip64")]
+
+[node name="enemy placements" parent="." instance=ExtResource("2_0yd66")]
+
+[editable path="enemy placements"]
