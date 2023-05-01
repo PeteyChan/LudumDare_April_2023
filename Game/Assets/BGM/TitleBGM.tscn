@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://wucpxsj2v0qy"]
+
+[ext_resource type="AudioStream" uid="uid://bqywynorf3k02" path="res://Pete/Sounds/Slums.ogg" id="1_lr8g5"]
+[ext_resource type="Script" path="res://Pete/BGM.cs" id="2_71xjv"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_lr8g5")
+volume_db = -20.0
+autoplay = true
+script = ExtResource("2_71xjv")

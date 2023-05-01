@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://crq71kggkl87p"]
+
+[ext_resource type="AudioStream" uid="uid://66u2x78ims8e" path="res://Pete/Sounds/Battle 1.ogg" id="1_i3buf"]
+[ext_resource type="Script" path="res://Pete/BGM.cs" id="2_6wtwm"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_i3buf")
+volume_db = -20.0
+autoplay = true
+script = ExtResource("2_6wtwm")

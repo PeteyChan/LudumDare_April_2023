@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2noywr11mtv8"]
+
+[ext_resource type="AudioStream" uid="uid://cnd56hv6wr87y" path="res://Pete/Sounds/Realistic Punch 4_5.wav" id="1_2khlb"]
+[ext_resource type="Script" path="res://Pete/SFX.cs" id="2_k3nl5"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_2khlb")
+volume_db = -7.115
+pitch_scale = 2.0
+script = ExtResource("2_k3nl5")

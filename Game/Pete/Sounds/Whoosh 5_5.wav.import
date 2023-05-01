@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3ms2kianuoye"
+path="res://.godot/imported/Whoosh 5_5.wav-b8cc240c83f9eada80039ad9ce8c5bc0.sample"
+
+[deps]
+
+source_file="res://Pete/Sounds/Whoosh 5_5.wav"
+dest_files=["res://.godot/imported/Whoosh 5_5.wav-b8cc240c83f9eada80039ad9ce8c5bc0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

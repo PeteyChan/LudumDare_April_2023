@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfl5iprb7cene"]
+
+[ext_resource type="AudioStream" uid="uid://ht1eisibmqop" path="res://Pete/Sounds/Zombie Bite 04.wav" id="1_6u5lt"]
+[ext_resource type="Script" path="res://Pete/SFX.cs" id="2_1j3jx"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_6u5lt")
+script = ExtResource("2_1j3jx")

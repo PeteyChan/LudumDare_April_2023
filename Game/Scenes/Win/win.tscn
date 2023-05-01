@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://kxkp2drdnkrg"]
+[gd_scene load_steps=5 format=3 uid="uid://kxkp2drdnkrg"]
 
 [ext_resource type="Texture2D" uid="uid://ce8hl8nxs62d8" path="res://Rick Assets/Floor/Stairs/WallLight.png" id="1_0ince"]
 [ext_resource type="Script" path="res://Scenes/Win/Button.cs" id="1_t1vc2"]
 [ext_resource type="Script" path="res://Scenes/Win/Score.cs" id="2_mjhcc"]
+[ext_resource type="PackedScene" uid="uid://cswum272j25oa" path="res://Assets/BGM/WinBGM.tscn" id="4_qw24c"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -61,3 +62,5 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Back to title screen"
 script = ExtResource("1_t1vc2")
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("4_qw24c")]

@@ -377,6 +377,7 @@ public partial class player : RigidBody2D, Interactable
             case PlayerStates.Jump:
                 if (state.entered_state)
                 {
+                    SFX.PlayJumpSound(GlobalPosition);
                     animator.Play("Fall");
                     LinearVelocity = new Vector2(LinearVelocity.X, -jump_strength);
                 }
@@ -388,6 +389,8 @@ public partial class player : RigidBody2D, Interactable
             case PlayerStates.Wall_Jump:
                 if (state.entered_state)
                 {
+                    SFX.PlayLanding(GlobalPosition);
+
                     has_wall_jumped = false;
                     animator.Play("WallJump", customSpeed: 1.5f);
                     UpdateFacing(!is_facing_left);
@@ -401,6 +404,7 @@ public partial class player : RigidBody2D, Interactable
                 {
                     LinearVelocity = new Vector2(move_speed * (is_facing_left ? -1 : 1), -jump_strength);
                     has_wall_jumped = true;
+                    SFX.PlayJumpSound(GlobalPosition);
                 }
 
                 if (is_grounded)
@@ -412,7 +416,10 @@ public partial class player : RigidBody2D, Interactable
 
             case PlayerStates.Landing:
                 if (state.entered_state)
+                {
                     animator.Play("Crouching");
+                    SFX.PlayLanding(GlobalPosition);
+                }
 
                 LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 10f);
 
@@ -434,6 +441,8 @@ public partial class player : RigidBody2D, Interactable
                     state_data.hits++;
                     animator.Play("Damaged");
                     animator.Seek(0, true);
+
+                    SFX.PlayHitImpact(GlobalPosition);
                 }
 
                 LinearVelocity = LinearVelocity.Lerp(Vector2.Zero, delta * 10f);
@@ -454,6 +463,7 @@ public partial class player : RigidBody2D, Interactable
                 if (state.entered_state)
                 {
                     animator.Play("Attack", customSpeed: 2f);
+                    SFX.PlayAttackWhoosh(GlobalPosition);
 
                     if (input.move != 0)
                         UpdateFacing(input.move < 0);
@@ -547,6 +557,7 @@ public partial class player : RigidBody2D, Interactable
                                         target_nodes.Visible = false;
                                     }
                                     OneOffLabel.Spawn(label_position, "Got Target Limb!!");
+                                    SFX.PlayLimbRip(label_position);
                                     return;
                                 }
                             }

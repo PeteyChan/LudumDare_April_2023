@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcm8s5y63w35o"]
+
+[ext_resource type="AudioStream" uid="uid://b7u2k82tde6lr" path="res://Pete/Sounds/Punch 2_1.wav" id="1_weod7"]
+[ext_resource type="Script" path="res://Pete/SFX.cs" id="2_qer5u"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_weod7")
+volume_db = -5.167
+script = ExtResource("2_qer5u")

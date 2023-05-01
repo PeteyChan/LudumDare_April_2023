@@ -39,6 +39,9 @@ public partial class CollectionPoint : Area2D
             {
                 if (target.Match(player.Inventory))
                 {
+                    if (this.TryFind(out AudioStreamPlayer2D audio))
+                        audio.Play();
+
                     player.Inventory = default;
 
                     if (!TryGetNextTarget()) return;

@@ -18,7 +18,9 @@ namespace SceneAssets.Instructions
 			Move Right: {Game.move_right}
 			Attack: {Game.attack}
 			Collect: {Game.collect}
-            Back to Title: {Game.back_to_title} 			
+            Back to Title: {Game.back_to_title}
+
+            -- Press Attack to Continue -- 			
 			";
         }
 
@@ -26,7 +28,7 @@ namespace SceneAssets.Instructions
         public override void _Process(double delta)
         {
             time += delta;
-            if (time > 10 || Game.attack.OnPressed())
+            if (time > 20 || Game.attack.OnPressed())
             {
                 Scene.Load("res://Scenes/Game/Game.tscn");
             }

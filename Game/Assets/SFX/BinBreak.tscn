@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://43khpod2gcs5"]
+
+[ext_resource type="AudioStream" uid="uid://2h0jchr32v4u" path="res://Pete/Sounds/Shield Wood 5_2.wav" id="1_12i3e"]
+[ext_resource type="Script" path="res://Pete/SFX.cs" id="2_s2ovy"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_12i3e")
+volume_db = -10.335
+script = ExtResource("2_s2ovy")

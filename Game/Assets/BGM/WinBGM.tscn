@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cswum272j25oa"]
+
+[ext_resource type="AudioStream" uid="uid://bvp830j53cgv6" path="res://Pete/Sounds/Victory Theme.ogg" id="1_qa7cm"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_qa7cm")
+volume_db = -20.0
+autoplay = true

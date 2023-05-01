@@ -13,6 +13,8 @@ namespace SceneAssets
                     this.TryFind(out AnimationPlayer player);
                     player.Play("Break", customSpeed: 2f);
 
+                    SFX.PlayBinBreak(GlobalPosition);
+
                     this.TryFind(out Area2D area);
                     area.CollisionLayer = 0;
                     return;

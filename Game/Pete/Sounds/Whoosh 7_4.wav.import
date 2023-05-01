@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c5oxxtyhdmjwv"
+path="res://.godot/imported/Whoosh 7_4.wav-c4fab910832a79237dca8035a55d9632.sample"
+
+[deps]
+
+source_file="res://Pete/Sounds/Whoosh 7_4.wav"
+dest_files=["res://.godot/imported/Whoosh 7_4.wav-c4fab910832a79237dca8035a55d9632.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
