@@ -15,6 +15,7 @@ public partial class player : RigidBody2D, Interactable
     {
         cyberpunk_dude,
         cyberpunk_girl,
+        cygore
     }
 
     public enum PlayerStates
