@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqhylm6788twm"]
+[gd_scene load_steps=4 format=3 uid="uid://bqhylm6788twm"]
 
 [ext_resource type="Script" path="res://Pete/CollectionPoint.cs" id="1_igswx"]
 [ext_resource type="Texture2D" uid="uid://bkc8ab5dgdbrh" path="res://Nick Art/Medical Waste Bin.png" id="2_06eb7"]
-[ext_resource type="PackedScene" uid="uid://cxdntkomy42dw" path="res://Assets/CollectionPoint/collection_target.tscn" id="3_etye2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjik8"]
 size = Vector2(508, 371)
@@ -33,5 +32,3 @@ text = "Collection Point"
 horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
-
-[node name="CollectionTarget" parent="." instance=ExtResource("3_etye2")]
