@@ -470,7 +470,6 @@ public partial class player : RigidBody2D, Interactable
                     animator.CurrentAnimationPosition < .5f)
                 {
                     var foot = armature.FindChild("Foot_Left") as Node2D;
-                    grounded_query_params.Transform = foot.GlobalTransform;
 
                     if (Physics.TryOverlapCircle2D(foot.GlobalPosition, 20, results_buffer, mask: Layers.Players | Layers.Default, exclude: exclude_buffer, debug: Game.Show_Debug_Gizmos))
                     {

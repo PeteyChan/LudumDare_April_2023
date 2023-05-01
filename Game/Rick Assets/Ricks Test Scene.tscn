@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3]
+[gd_scene load_steps=16 format=3 uid="uid://copskpsg15h8v"]
 
 [ext_resource type="PackedScene" uid="uid://cdnlr4rlweagm" path="res://Rick Assets/StreetLamp01.tscn" id="2_rueyj"]
 [ext_resource type="PackedScene" uid="uid://b5cogeuwci3g3" path="res://Rick Assets/Prefabs/Bridge01.tscn" id="3_baena"]
