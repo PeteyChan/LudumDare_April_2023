@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkobsqseyni8n"]
+[gd_scene load_steps=11 format=3 uid="uid://bkobsqseyni8n"]
 
 [ext_resource type="PackedScene" uid="uid://byt724vpwg6u2" path="res://Rick Assets/Ricks Test Scene.tscn" id="1_rip64"]
 [ext_resource type="PackedScene" uid="uid://bqhylm6788twm" path="res://Assets/CollectionPoint/collection_point.tscn" id="1_sjtjf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cqcaeh3o2j0o" path="res://Assets/Actors/cygore.tscn" id="7_r6ync"]
 [ext_resource type="PackedScene" uid="uid://dua8tqf6qr2ye" path="res://Assets/Destructable_Bin.tscn" id="8_36etr"]
 [ext_resource type="PackedScene" uid="uid://crq71kggkl87p" path="res://Assets/BGM/GameBGM.tscn" id="9_yve2j"]
+[ext_resource type="Texture2D" uid="uid://w6e560k45kkm" path="res://Pete/00001.png" id="10_gsncc"]
 
 [node name="Game" type="Node2D"]
 
@@ -113,6 +114,9 @@ position = Vector2(-727, -1123)
 [node name="Cygore2" parent="enemy placements" instance=ExtResource("7_r6ync")]
 position = Vector2(122, -1115)
 
+[node name="Cygore3" parent="enemy placements" instance=ExtResource("7_r6ync")]
+position = Vector2(8889, -2706)
+
 [node name="bins" type="Node" parent="."]
 
 [node name="Bin" parent="bins" instance=ExtResource("8_36etr")]
@@ -137,3 +141,12 @@ position = Vector2(7494, 488)
 position = Vector2(12730, 495)
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("9_yve2j")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.01, 0.01)
+motion_offset = Vector2(1768, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("10_gsncc")
