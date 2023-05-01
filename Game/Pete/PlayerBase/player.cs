@@ -203,6 +203,9 @@ public partial class player : RigidBody2D, Interactable
                 input.jump = Game.jump.Pressed();
                 input.attack = Game.attack.OnPressed();
                 input.collect = Game.collect.OnPressed();
+
+                if (Game.back_to_title.OnPressed())
+                    Debug.Console.Send("Load Title");
             }
             else
             {

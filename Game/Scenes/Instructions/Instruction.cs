@@ -17,7 +17,8 @@ namespace SceneAssets.Instructions
 			Move Left :	{Game.move_left}
 			Move Right: {Game.move_right}
 			Attack: {Game.attack}
-			Collect: {Game.collect} 			
+			Collect: {Game.collect}
+            Back to Title: {Game.back_to_title} 			
 			";
         }
 
