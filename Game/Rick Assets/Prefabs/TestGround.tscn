@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bknkqkth10dww"]
 
-[ext_resource type="Texture2D" uid="uid://do5mi05awrf0p" path="res://icon.svg" id="1_s6c54"]
+[ext_resource type="Texture2D" uid="uid://ce8hl8nxs62d8" path="res://Rick Assets/Floor/Stairs/WallLight.png" id="1_vrk8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oxvkw"]
 size = Vector2(129, 128)
@@ -9,7 +9,9 @@ size = Vector2(129, 128)
 position = Vector2(0, 64)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_s6c54")
+position = Vector2(0.499999, -1)
+scale = Vector2(0.255859, 0.253906)
+texture = ExtResource("1_vrk8w")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
