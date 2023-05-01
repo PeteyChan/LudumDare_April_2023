@@ -28,7 +28,10 @@ public partial class CollectionPoint : Area2D
         foreach (var collection_target in this.FindAll<collection_target>())
             collection_targets.Enqueue(collection_target);
 
-        TryGetNextTarget();
+        if (collection_targets.Count > 0)
+            TryGetNextTarget();
+
+        label.Text = $"Limb: {target.limb}\ncolor: {target.color}\ntype: {target.player}\n";
 
         this.BodyEntered += body =>
         {
@@ -41,7 +44,7 @@ public partial class CollectionPoint : Area2D
                     if (!TryGetNextTarget()) return;
 
                     string text = collection_targets.Count == 0 ? "Last one!" : $"{collection_targets.Count + 1} To Go!!";
-                    
+
                     OneOffLabel.Spawn(Position + new Vector2(0, -400), text);
                 }
 

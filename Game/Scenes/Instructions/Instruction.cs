@@ -27,7 +27,7 @@ namespace SceneAssets.Instructions
             time += delta;
             if (time > 10 || Game.attack.OnPressed())
             {
-                Debug.Console.Send("load ricks level");
+                Scene.Load("res://Scenes/Game/Game.tscn");
             }
         }
     }
